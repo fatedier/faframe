@@ -2,6 +2,7 @@
 *.slo
 *.lo
 *.o
+*.d
 *.obj
 
 # Precompiled Headers
@@ -26,3 +27,7 @@
 *.exe
 *.out
 *.app
+
+# dir
+dep/
+obj/
