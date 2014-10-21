@@ -4,7 +4,6 @@
 * 文件名称:  FaLogger.cpp
 * 描述:      日志类
 * @author:   王成龙
-* @date:     2014-10-11
 * 修改记录：
 *
 ***************************************************************************************/
@@ -32,7 +31,7 @@ FaLogger::~FaLogger()
 void FaLogger::init(FaProperties& cfgFile, const char* preName)
 {
 	string strPreName = preName;
-	if(strPreName != "")
+	if (strPreName != "")
 	{
 		strPreName += ".";
 	}
@@ -55,7 +54,7 @@ void FaLogger::close()
 //检测指定日志级别是否能够输出
 bool FaLogger::isEnableFor(FaLogLevel logLevel)
 {
-	if(logLevel >= m_nLogLevel)
+	if (logLevel >= m_nLogLevel)
 	{
 		return true;
 	}
@@ -68,7 +67,7 @@ bool FaLogger::isEnableFor(FaLogLevel logLevel)
 //记录一条日志
 void FaLogger::log(FaLogLevel logLevel, const string& msg, const char* file, int line)
 {
-	if(false == this->isEnableFor(logLevel))
+	if (false == this->isEnableFor(logLevel))
 	{
 		return;
 	}

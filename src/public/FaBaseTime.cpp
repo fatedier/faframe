@@ -4,7 +4,6 @@
 * 文件名称:  FaBaseTime.cpp
 * 描述:      日期时间相关的基类
 * @author:   王成龙
-* @date:     2014-09-30
 * 修改记录：
 *
 ***************************************************************************************/
@@ -43,7 +42,7 @@ FaBaseTime::~FaBaseTime()
 //判断是否是闰年
 bool FaBaseTime::isLeapYear(int year) const
 {
-	if(year%100 == 0)
+	if (year%100 == 0)
 	{
 		return (year%400 == 0);
 	}
@@ -57,7 +56,7 @@ bool FaBaseTime::isLeapYear(int year) const
 int FaBaseTime::getLastDayOfMonth(int year, int month) const
 {
 	//闰年
-	if(this->isLeapYear(year))
+	if (this->isLeapYear(year))
 	{
 		return m_nMonthDayS[month-1];
 	}
@@ -83,15 +82,15 @@ void FaBaseTime::verifyDate(const string& strDate)
 	int month = atoi(strDate.substr(4, 2).c_str());
 	int day = atoi(strDate.substr(6, 2).c_str());
 	
-	if(year <= 0 || year > 9999)
+	if (year <= 0 || year > 9999)
 	{
 		throw FaException(ERROR_TIME, "年份错误！");
 	}
-	if(month <= 0 || month > 12)
+	if (month <= 0 || month > 12)
 	{
 		throw FaException(ERROR_TIME, "月份错误！");
 	}
-	if(day <= 0 || day > this->getLastDayOfMonth(year, month))
+	if (day <= 0 || day > this->getLastDayOfMonth(year, month))
 	{
 		throw FaException(ERROR_TIME, "日(day)错误！");
 	}
@@ -104,15 +103,15 @@ void FaBaseTime::verifyTime(const string& strTime)
 	int minute = atoi(strTime.substr(2, 2).c_str());
 	int second = atoi(strTime.substr(4, 2).c_str());
 	
-	if(hour < 0 || hour > 23)
+	if (hour < 0 || hour > 23)
 	{
 		throw FaException(ERROR_TIME, "小时错误！");
 	}
-	if(minute < 0 || minute > 59)
+	if (minute < 0 || minute > 59)
 	{
 		throw FaException(ERROR_TIME, "分钟错误！");
 	}
-	if(second < 0 || second > 59)
+	if (second < 0 || second > 59)
 	{
 		throw FaException(ERROR_TIME, "秒错误！");
 	}

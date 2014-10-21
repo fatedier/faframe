@@ -4,13 +4,12 @@
 * 文件名称:  FaLogger.h
 * 描述:      日志类
 * @author:   王成龙
-* @date:     2014-10-11
 * 修改记录：
 *
 ***************************************************************************************/
 
-#ifndef _FALOGGER_H_
-#define _FALOGGER_H_
+#ifndef FAFRAME_PUBLIC_FALOGGER_H_
+#define FAFRAME_PUBLIC_FALOGGER_H_
 
 #include "FaProperties.h"
 #include "FaFunc.h"
@@ -110,4 +109,4 @@ private:
 	FILE* m_fileOut;		//文件输出对象
 };
 
-#endif
+#endif //FAFRAME_PUBLIC_FALOGGER_H_

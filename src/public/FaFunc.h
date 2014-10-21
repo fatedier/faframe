@@ -4,13 +4,12 @@
 * 文件名称:  FaFunc.h
 * 描述:      常用函数接口
 * @author:   王成龙
-* @date:     2014-08-27
 * 修改记录：
 *
 ***************************************************************************************/
 
-#ifndef _FAFUNC_H_
-#define _FAFUNC_H_
+#ifndef FAFRAME_PUBLIC_FAFUNC_H_
+#define FAFRAME_PUBLIC_FAFUNC_H_
 
 #include <iostream>
 #include <string>
@@ -52,4 +51,4 @@ int fa_getWeekDay(int year, int month, int day);
 */
 string fa_getSysTime();
 
-#endif
+#endif //FAFRAME_PUBLIC_FAFUNC_H_

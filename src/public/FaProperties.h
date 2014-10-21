@@ -4,14 +4,13 @@
 * 文件名称:  FaProperties.h
 * 描述:      配置文件相关
 * @author:   王成龙
-* @date:     2014-10-10
 * @注意：	 根据键查找值如果没有默认值时需要捕获异常
 * 修改记录：
 *
 ***************************************************************************************/
 
-#ifndef _FAPROPERTIES_H_
-#define _FAPROPERTIES_H_
+#ifndef FAFRAME_PUBLIC_FAPROPERTIES_H_
+#define FAFRAME_PUBLIC_FAPROPERTIES_H_
 
 #include <string>
 #include <string.h>
@@ -31,7 +30,6 @@ public:
 	virtual ~FaProperties();
 
 /*--常用函数--*/
-public:
 	//加载配置文件，错误则抛出异常
 	void open(const char* sFileName);
 	//清空map中的内容
@@ -55,4 +53,4 @@ private:
 	map<string, string> mapLinevalue;	//每一行的键值对，中间用"="号分隔
 };
 
-#endif
+#endif //FAFRAME_PUBLIC_FAPROPERTIES_H_

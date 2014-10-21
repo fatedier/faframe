@@ -4,13 +4,12 @@
 * 文件名称:  FaBaseTime.h
 * 描述:      日期时间相关的基类
 * @author:   王成龙
-* @date:     2014-09-30
 * 修改记录：
 *
 ***************************************************************************************/
 
-#ifndef _FABASETIME_H_
-#define _FABASETIME_H_
+#ifndef FAFRAME_PUBLIC_FABASETIME_H_
+#define FAFRAME_PUBLIC_FABASETIME_H_
 
 #include <string>
 #include <string.h>
@@ -31,7 +30,6 @@ public:
 	virtual ~FaBaseTime();
 
 /**常用函数**/
-public:
 	bool isLeapYear(int year) const;					//判断是否是闰年
 	int getLastDayOfMonth(int year, int month) const;	//获取指定年月的最后一天
 	string toString() const;							//返回日期时间字符串
@@ -44,11 +42,10 @@ protected:
 	void verifyTime(const string& strTime);		//检查6位字符的时间格式是否正确
 	virtual bool verifyFormat() = 0;			//检查时间格式和字符串是否符合要求
 	
-protected:
 	static int m_nMonthDayC[];	//普通年份的月份对应的天数
 	static int m_nMonthDayS[];	//闰年的月份对应的天数
 	
 	string m_strDateTime;		//时间对应字符串
 };
 
-#endif
+#endif //FAFRAME_PUBLIC_FABASETIME_H_

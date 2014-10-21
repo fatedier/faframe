@@ -4,14 +4,13 @@
 * 文件名称:  FaDateTime.h
 * 描述:      日期时间类
 * @author:   王成龙
-* @date:     2014-09-30
 * 注意：	 1970年之前的时间处理可能会有异常
 * 修改记录：
 *
 ***************************************************************************************/
 
-#ifndef _FADATETIME_H_
-#define _FADATETIME_H_
+#ifndef FAFRAME_PUBLIC_FADATETIME_H_
+#define FAFRAME_PUBLIC_FADATETIME_H_
 
 #include "FaBaseTime.h"
 #include "FaDate.h"
@@ -27,7 +26,6 @@ public:
 	virtual ~FaDateTime();
 
 /**常用函数**/
-public:
 	virtual time_t mkTime() const;		//获取从1970年开始到指定日期的秒数
 	virtual string getSysTime();		//获取系统时间
 	int getYear() const;				//获取年份
@@ -46,7 +44,6 @@ public:
 	//string toString() const;							//返回日期时间字符串
 
 /**运算符重载**/
-public:
 	FaDateTime& operator =(const char* sDateTime);
 	FaDateTime& operator =(const string& strDateTime);
 	FaDateTime& operator =(const FaDateTime& faDateTime);
@@ -64,4 +61,4 @@ protected:
 	virtual bool verifyFormat();		//检查时间格式和字符串是否符合要求
 };
 
-#endif
+#endif //FAFRAME_PUBLIC_FADATETIME_H_

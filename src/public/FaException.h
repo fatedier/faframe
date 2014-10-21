@@ -4,13 +4,12 @@
 * 文件名称:  FaException.h
 * 描述:      异常处理类
 * @author:   王成龙
-* @date:     2014-09-30
 * 修改记录：
 *
 ***************************************************************************************/
 
-#ifndef _FAEXCEPTION_H_
-#define _FAEXCEPTION_H_
+#ifndef FAFRAME_PUBLIC_FAEXCEPTION_H_
+#define FAFRAME_PUBLIC_FAEXCEPTION_H_
 
 #include <string>
 #include <exception>
@@ -33,4 +32,4 @@ private:
 	string m_strErrorMsg;		//异常信息
 };
 
-#endif
+#endif //FAFRAME_PUBLIC_FAEXCEPTION_H_

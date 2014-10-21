@@ -4,7 +4,6 @@
 * 文件名称:  FaFunc.cpp
 * 描述:      常用函数接口
 * @author:   王成龙
-* @date:     2014-08-27
 * 修改记录：
 *
 ***************************************************************************************/
@@ -27,7 +26,7 @@ string fa_ltostr(long number)
 
 int fa_getWeekDay(int year, int month, int day)
 {
-	if(month == 1 || month == 2)
+	if (month == 1 || month == 2)
 	{
 		year -= 1;
 		month += 12;
@@ -44,7 +43,7 @@ string fa_getSysTime()
 	
 	char sTemp[30] = {0};
 	snprintf(sTemp, sizeof(sTemp), "%04d%02d%02d%02d%02d%02d%03d%03d", pTime->tm_year+1900, \
-			pTime->tm_mon+1, pTime->tm_mday, pTime->tm_hour, pTime->tm_min, pTime->tm_sec, \
-			tv.tv_usec/1000, tv.tv_usec%1000);
+			 pTime->tm_mon+1, pTime->tm_mday, pTime->tm_hour, pTime->tm_min, pTime->tm_sec, \
+			 tv.tv_usec/1000, tv.tv_usec%1000);
 	return (string)sTemp;
 }

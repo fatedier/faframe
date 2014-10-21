@@ -4,7 +4,6 @@
 * 文件名称:  FaProperties.cpp
 * 描述:      配置文件相关
 * @author:   王成龙
-* @date:     2014-10-10
 * 修改记录：
 *
 ***************************************************************************************/
@@ -31,9 +30,9 @@ void FaProperties::open(const char* sFileName)
 	fstream file(m_strFileName.c_str(), ios::in);
 	
 	char sLineStr[MAX_LINE_LENGTH] = {0};
-	if(file.is_open())
+	if (file.is_open())
 	{
-		while(file.getline(sLineStr, MAX_LINE_LENGTH))
+		while (file.getline(sLineStr, MAX_LINE_LENGTH))
 		{
 			this->parseLineToMap(sLineStr);
 		}
@@ -57,7 +56,7 @@ string FaProperties::getString(const string& strKey)
 {
 	map<string, string>::iterator iter;
 	iter = mapLinevalue.find(strKey);
-	if(iter != mapLinevalue.end())
+	if (iter != mapLinevalue.end())
 	{
 		return iter->second;
 	}
@@ -73,7 +72,7 @@ string FaProperties::getString(const string& strKey, const string& strDefaultVal
 {
 	map<string, string>::iterator iter;
 	iter = mapLinevalue.find(strKey);
-	if(iter != mapLinevalue.end())
+	if (iter != mapLinevalue.end())
 	{
 		return iter->second;
 	}
@@ -113,19 +112,19 @@ void FaProperties::parseLineToMap(char* sLineStr)
 	
 	this->trim(sLineStr);
 	char* p = strchr(sLineStr, '#');	//去除掉注释部分
-	if(NULL != p)
+	if (NULL != p)
 	{
 		*p = '\0';
 	}
 	//如果只有注释部分，直接返回
-	if('\0' == *sLineStr)
+	if ('\0' == *sLineStr)
 	{
 		return;
 	}
 	//查找分隔符"="
 	p = strchr(sLineStr, '=');
 	//如果不存在，则为无效的配置
-	if(NULL == p)
+	if (NULL == p)
 	{
 		return;
 	}
@@ -145,22 +144,22 @@ void FaProperties::trim(char* str)
 	char* head = str;
 	char* tail = str + strlen(str);
 	//跳过前面的空格和Tab
-	while(*head == ' ' || *head == '\t')
+	while (*head == ' ' || *head == '\t')
 	{
 		head++;
 	}
 	//跳过后面的空格和Tab
-	if(head != tail)
+	if (head != tail)
 	{
 		tail--;
-		while(*tail == ' ' || *tail == '\t' || *tail == '\0')
+		while (*tail == ' ' || *tail == '\t' || *tail == '\0')
 		{
 			tail--;
 		}
 		*(++tail) = '\0';
 	}
 	//将非空的字符串移到前面
-	while(head != tail)
+	while (head != tail)
 	{
 		*str = *head;
 		str++;

@@ -4,14 +4,13 @@
 * 文件名称:  FaTime.h
 * 描述:      时间类
 * @author:   王成龙
-* @date:     2014-09-30
 * 注意：	 1970年之前的时间处理可能会有异常
 * 修改记录：
 *
 ***************************************************************************************/
 
-#ifndef _FATIME_H_
-#define _FATIME_H_
+#ifndef FAFRAME_PUBLIC_FATIME_H_
+#define FAFRAME_PUBLIC_FATIME_H_
 
 #include "FaBaseTime.h"
 
@@ -25,7 +24,6 @@ public:
 	virtual ~FaTime();
 
 /**常用函数**/
-public:
 	virtual time_t mkTime() const;		//获取从1970年开始到指定日期的秒数
 	virtual string getSysTime();		//获取系统时间
 	int getHour() const;				//获取小时
@@ -41,7 +39,6 @@ public:
 	//string toString() const;							//返回日期时间字符串
 
 /**运算符重载**/
-public:
 	FaTime& operator =(const char* sTime);
 	FaTime& operator =(const string& strTime);
 	FaTime& operator =(const FaTime& faTime);
@@ -58,4 +55,4 @@ protected:
 	virtual bool verifyFormat();		//检查时间格式和字符串是否符合要求
 };
 
-#endif
+#endif //FAFRAME_PUBLIC_FATIME_H_

@@ -4,7 +4,6 @@
 * 文件名称:  FaDateTime.h
 * 描述:      日期时间类
 * @author:   王成龙
-* @date:     2014-09-30
 * 修改记录：
 *
 ***************************************************************************************/
@@ -155,7 +154,7 @@ FaDateTime& FaDateTime::operator =(const FaDateTime& faDateTime)
 
 bool operator >(const FaDateTime& left, const FaDateTime& right)
 {
-	if(strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) > 0)
+	if (strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) > 0)
 	{
 		return true;
 	}
@@ -164,7 +163,7 @@ bool operator >(const FaDateTime& left, const FaDateTime& right)
 
 bool operator >=(const FaDateTime& left, const FaDateTime& right)
 {
-	if(strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) >= 0)
+	if (strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) >= 0)
 	{
 		return true;
 	}
@@ -173,7 +172,7 @@ bool operator >=(const FaDateTime& left, const FaDateTime& right)
 
 bool operator <(const FaDateTime& left, const FaDateTime& right)
 {
-	if(strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) < 0)
+	if (strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) < 0)
 	{
 		return true;
 	}
@@ -182,7 +181,7 @@ bool operator <(const FaDateTime& left, const FaDateTime& right)
 
 bool operator <=(const FaDateTime& left, const FaDateTime& right)
 {
-	if(strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) <= 0)
+	if (strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) <= 0)
 	{
 		return true;
 	}
@@ -191,7 +190,7 @@ bool operator <=(const FaDateTime& left, const FaDateTime& right)
 
 bool operator ==(const FaDateTime& left, const FaDateTime& right)
 {
-	if(strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) == 0)
+	if (strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) == 0)
 	{
 		return true;
 	}
@@ -200,7 +199,7 @@ bool operator ==(const FaDateTime& left, const FaDateTime& right)
 
 bool operator !=(const FaDateTime& left, const FaDateTime& right)
 {
-	if(strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) != 0)
+	if (strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) != 0)
 	{
 		return true;
 	}
@@ -238,15 +237,15 @@ int operator -(const FaDateTime& left, const FaDateTime& right)
 bool FaDateTime::verifyFormat()
 {
 	//检查时间字符串是否全都是数字
-	for(int i=0; i<m_strDateTime.size(); i++)
+	for (int i=0; i<m_strDateTime.size(); i++)
 	{
-		if(!isdigit(m_strDateTime[i]))
+		if (!isdigit(m_strDateTime[i]))
 		{
 			throw FaException(ERROR_TIME, "时间字符串含有非数字字符！");
 		}
 	}
 	
-	if(m_strDateTime.size() != 14)
+	if (m_strDateTime.size() != 14)
 	{
 		throw FaException(ERROR_TIME, "完整时间格式长度错误！");
 	}
