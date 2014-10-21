@@ -4,7 +4,7 @@
 top_srcdir	= ..
 
 #目标程序名
-TARGET = test.exe
+TARGET = test
 
 CPP_FILES = $(shell ls *.cpp)
 C_FILES = $(-shell ls *.c)
