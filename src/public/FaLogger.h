@@ -13,7 +13,6 @@
 
 #include "FaProperties.h"
 #include "FaFunc.h"
-using namespace std;
 
 //日志等级定义
 enum FaLogLevel
@@ -79,6 +78,12 @@ class FaLogger;
     }\
 }\
 
+
+/*
+* 先调用 init 函数从配置文件初始化日志对象
+* 在需要打印日志的代码中使用 LOG_XXXX(logger, strMsg)，logger为已经初始化的日志对象
+* 结束时调用 close函数
+*/
 class FaLogger
 {
 public:

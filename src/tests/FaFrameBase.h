@@ -11,6 +11,9 @@
 #ifndef FAFRAME_FRAME_FAFRAMEBASE_H
 #define FAFRAME_FRAME_FAFRAMEBASE_H
 
+#include "FaLogger.h"
+#include "stdio.h"
+
 class FaFrameBase
 {
 /*--构造及析构函数--*/
@@ -21,7 +24,7 @@ public:
 /*--常用函数--*/
     //进程初始化
     virtual int  initialize(int argc,char* argv[]);
-    //启动进程前的准备
+    //启动进程前的准备工作
     virtual void prepare();
     //业务处理函数
     virtual void handle();
