@@ -1,31 +1,31 @@
-#¹«ÓÃMake¹æÔòÅäÖÃ
+#å…¬ç”¨Makeè§„åˆ™é…ç½®
 
-#ÉèÖÃ±àÒëÆ÷ÀàÐÍ
+#è®¾ç½®ç¼–è¯‘å™¨ç±»åž‹
 CXX := g++
 CC := gcc
 
-#ÉèÖÃ±àÒë.dÎÄ¼þÏà¹ØÄÚÈÝ
+#è®¾ç½®ç¼–è¯‘.dæ–‡ä»¶ç›¸å…³å†…å®¹
 DEPFLAGS := -MM
 DEPFILE = $@.$$$$
 
-#ÉèÖÃËùÓÐ¾²Ì¬¿âÎÄ¼þËùÔÚÎ»ÖÃ£¬»á¸ù¾ÝÃ¿¸öMakefileÎÄ¼þµÄtop_srcdirÉèÖÃÏà¶ÔÎ»ÖÃ
+#è®¾ç½®æ‰€æœ‰é™æ€åº“æ–‡ä»¶æ‰€åœ¨ä½ç½®ï¼Œä¼šæ ¹æ®æ¯ä¸ªMakefileæ–‡ä»¶çš„top_srcdirè®¾ç½®ç›¸å¯¹ä½ç½®
 LIBDIR := $(top_srcdir)/lib
 
-#ÉèÖÃ±àÒë³ÌÐòÊ±ÐèÒªÔÚÄÄÐ©Ä¿Â¼²éÕÒ¾²Ì¬¿âÎÄ¼þ
+#è®¾ç½®ç¼–è¯‘ç¨‹åºæ—¶éœ€è¦åœ¨å“ªäº›ç›®å½•æŸ¥æ‰¾é™æ€åº“æ–‡ä»¶
 LDFLAGS := -L.\
 		  -L$(top_srcdir)/lib
 
-#ÉèÖÃVPATH£¬ÔÚ¼ì²éÒÀÀµ¹ØÏµÊ±£¬Èç¹û²éÕÒ-lxxxxÊ±£¬ÔÚÄÄÐ©Ä¿Â¼²éÕÒ¾²Ì¬¿âÎÄ¼þ
+#è®¾ç½®VPATHï¼Œåœ¨æ£€æŸ¥ä¾èµ–å…³ç³»æ—¶ï¼Œå¦‚æžœæŸ¥æ‰¾-lxxxxæ—¶ï¼Œåœ¨å“ªäº›ç›®å½•æŸ¥æ‰¾é™æ€åº“æ–‡ä»¶
 VPATH := $(LIBDIR)
 
-#ÉèÖÃ±àÒë³ÌÐòÊ±²éÕÒÍ·ÎÄ¼þµÄÄ¿Â¼Î»ÖÃ
+#è®¾ç½®ç¼–è¯‘ç¨‹åºæ—¶æŸ¥æ‰¾å¤´æ–‡ä»¶çš„ç›®å½•ä½ç½®
 INCLUDEDIR := -I.\
 		      -I../inc\
 
-#ÉùÃ÷ÒªÉú³ÉµÄÄ¿±êÎÄ¼þ£¬¾ßÌå¹æÔòÔÚ¾ßÌåµÄMakefileÖÐ¶¨Òå
+#å£°æ˜Žè¦ç”Ÿæˆçš„ç›®æ ‡æ–‡ä»¶ï¼Œå…·ä½“è§„åˆ™åœ¨å…·ä½“çš„Makefileä¸­å®šä¹‰
 $(TARGET):
 
-#Éú³É.oÎÄ¼þËùÒÀÀµµÄ.cppºÍ.cÎÄ¼þ
+#ç”Ÿæˆ.oæ–‡ä»¶æ‰€ä¾èµ–çš„.cppå’Œ.cæ–‡ä»¶
 obj/%.o:%.cpp
 	@if test ! -d "obj"; then\
 		mkdir -p obj;\
@@ -38,7 +38,7 @@ obj/%.o:%.c
 	fi;
 	$(CC) -c -o $@ $(INCLUDEDIR) $<
 	
-#Éú³É.dÎÄ¼þ,´æ·Å.cppÎÄ¼þµÄËùÓÐÒÀÀµ¹æÔò
+#ç”Ÿæˆ.dæ–‡ä»¶,å­˜æ”¾.cppæ–‡ä»¶çš„æ‰€æœ‰ä¾èµ–è§„åˆ™
 dep/%.d: %.cpp
 	@if test ! -d "dep"; then\
 		mkdir -p dep;\
@@ -48,7 +48,7 @@ dep/%.d: %.cpp
 	sed 's/$*\.o[ :]*/obj\/$*\.o dep\/$*\.d : /g' < $@.$$$$ > $@;\
 	rm -f $@.$$$$
 
-#Éú³É.dÎÄ¼þ,´æ·Å.cÎÄ¼þµÄËùÓÐÒÀÀµ¹æÔò
+#ç”Ÿæˆ.dæ–‡ä»¶,å­˜æ”¾.cæ–‡ä»¶çš„æ‰€æœ‰ä¾èµ–è§„åˆ™
 dep/%.d: %.c
 	@if test ! -d "dep"; then\
 		mkdir -p dep;\
@@ -60,10 +60,10 @@ dep/%.d: %.c
 
 include $(DEPS)
 
-#¼ì²âÊÇ·ñÓÐÎÄ¼þ±»ÐÞ¸Ä£¬Ö»ÒªÓÐ¾ÍÈ«²¿±àÒë
+#æ£€æµ‹æ˜¯å¦æœ‰æ–‡ä»¶è¢«ä¿®æ”¹ï¼Œåªè¦æœ‰å°±å…¨éƒ¨ç¼–è¯‘
 all: $(SRCS) $(TARGETS)
 
-#Çå³ý±àÒëÎÄ¼þ
+#æ¸…é™¤ç¼–è¯‘æ–‡ä»¶
 .PHONY:clean
 clean:
 	-rm -f $(TARGET)

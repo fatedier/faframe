@@ -1,10 +1,10 @@
 /**************************************************************************************
 *
-* Copyright  (c) 2014, FateDier All rights reserved¡£
-* ÎÄ¼şÃû³Æ:  FaLogger.h
-* ÃèÊö:      ÈÕÖ¾Àà
-* @author:   Íõ³ÉÁú
-* ĞŞ¸Ä¼ÇÂ¼£º
+* Copyright  (c) 2014, FateDier All rights reservedã€‚
+* æ–‡ä»¶åç§°:  FaLogger.h
+* æè¿°:      æ—¥å¿—ç±»
+* @author:   ç‹æˆé¾™
+* ä¿®æ”¹è®°å½•ï¼š
 *
 ***************************************************************************************/
 
@@ -15,98 +15,98 @@
 #include "FaFunc.h"
 using namespace std;
 
-//ÈÕÖ¾µÈ¼¶¶¨Òå
+//æ—¥å¿—ç­‰çº§å®šä¹‰
 enum FaLogLevel
 {
-	FAFATAL,	//0
-	FAERROR,	//1
-	FAWARN,		//2
-	FAINFO,		//3
-	FADEBUG		//4
+    FAFATAL,    //0
+    FAERROR,    //1
+    FAWARN,     //2
+    FAINFO,     //3
+    FADEBUG     //4
 };
 
-//ÈÕÖ¾µÈ¼¶¶ÔÓ¦µÄ×Ö·û´®
-const char sLogLevelName[][10] = 
+//æ—¥å¿—ç­‰çº§å¯¹åº”çš„å­—ç¬¦ä¸²
+const char sLogLevelName[][10] =
 {
-	"FATAL",
-	"ERROR",
-	"WARN ",
-	"INFO ",
-	"DEBUG"
+    "FATAL",
+    "ERROR",
+    "WARN ",
+    "INFO ",
+    "DEBUG"
 };
 
-//ÌáÇ°ÉùÃ÷
+//æå‰å£°æ˜
 class FaLogger;
 
-//ÈÕÖ¾º¯Êıºê¶¨Òå
+//æ—¥å¿—å‡½æ•°å®å®šä¹‰
 #define LOG_FATAL(logger, strMsg)\
 {\
-	if(true == (logger)->isEnableFor(FAFATAL))\
-	{\
-		(logger)->log(FAFATAL, strMsg, __FILE__, __LINE__);\
-	}\
+    if(true == (logger)->isEnableFor(FAFATAL))\
+    {\
+        (logger)->log(FAFATAL, strMsg, __FILE__, __LINE__);\
+    }\
 }\
 
 #define LOG_ERROR(logger, strMsg)\
 {\
-	if(true == (logger)->isEnableFor(FAERROR))\
-	{\
-		(logger)->log(FAERROR, strMsg, __FILE__, __LINE__);\
-	}\
+    if(true == (logger)->isEnableFor(FAERROR))\
+    {\
+        (logger)->log(FAERROR, strMsg, __FILE__, __LINE__);\
+    }\
 }\
 
 #define LOG_WARN(logger, strMsg)\
 {\
-	if(true == (logger)->isEnableFor(FAWARN))\
-	{\
-		(logger)->log(FAWARN, strMsg, __FILE__, __LINE__);\
-	}\
+    if(true == (logger)->isEnableFor(FAWARN))\
+    {\
+        (logger)->log(FAWARN, strMsg, __FILE__, __LINE__);\
+    }\
 }\
 
 #define LOG_INFO(logger, strMsg)\
 {\
-	if(true == (logger)->isEnableFor(FAINFO))\
-	{\
-		(logger)->log(FAINFO, strMsg, __FILE__, __LINE__);\
-	}\
+    if(true == (logger)->isEnableFor(FAINFO))\
+    {\
+        (logger)->log(FAINFO, strMsg, __FILE__, __LINE__);\
+    }\
 }\
 
 #define LOG_DEBUG(logger, strMsg)\
 {\
-	if(true == (logger)->isEnableFor(FADEBUG))\
-	{\
-		(logger)->log(FADEBUG, strMsg, __FILE__, __LINE__);\
-	}\
+    if(true == (logger)->isEnableFor(FADEBUG))\
+    {\
+        (logger)->log(FADEBUG, strMsg, __FILE__, __LINE__);\
+    }\
 }\
 
 class FaLogger
 {
 public:
-	FaLogger();
-	//¹¹Ôìº¯Êı£ºĞèÒªÅäÖÃÎÄ¼ş¶ÔÏó¡¢ÅäÖÃµÄÇ°×ºÃû£¨Èç test.log.level£¬test¾ÍÊÇÇ°×ºÃû£©
-	FaLogger(FaProperties& cfgFile, const char* preName);
-	virtual ~FaLogger();
+    FaLogger();
+    //æ„é€ å‡½æ•°ï¼šéœ€è¦é…ç½®æ–‡ä»¶å¯¹è±¡ã€é…ç½®çš„å‰ç¼€åï¼ˆå¦‚ test.log.levelï¼Œtestå°±æ˜¯å‰ç¼€åï¼‰
+    FaLogger(FaProperties& cfgFile, const char* preName);
+    virtual ~FaLogger();
 
-	//³õÊ¼»¯
-	void init(FaProperties& cfgFile, const char* preName);
-	//¹Ø±ÕÎÄ¼şÊä³ö¶ÔÏó
-	void close();
-	//¼ì²âÖ¸¶¨ÈÕÖ¾¼¶±ğÊÇ·ñÄÜ¹»Êä³ö
-	bool isEnableFor(FaLogLevel logLevel);
-	
-	/*
-	* ¼ÇÂ¼Ò»ÌõÈÕÖ¾
-	* @param logLevel:  ÈÕÖ¾¼¶±ğ
-	* @param msg: 	    ÈÕÖ¾ÄÚÈİ
-	* @param file: 		´úÂëËùÔÚÎÄ¼şÃû
-	* @param line:		´úÂëËùÔÚĞĞÊı
-	*/
-	void log(FaLogLevel logLevel, const string& msg, const char* file, int line);
+    //åˆå§‹åŒ–
+    void init(FaProperties& cfgFile, const char* preName);
+    //å…³é—­æ–‡ä»¶è¾“å‡ºå¯¹è±¡
+    void close();
+    //æ£€æµ‹æŒ‡å®šæ—¥å¿—çº§åˆ«æ˜¯å¦èƒ½å¤Ÿè¾“å‡º
+    bool isEnableFor(FaLogLevel logLevel);
+
+    /*
+    * è®°å½•ä¸€æ¡æ—¥å¿—
+    * @param logLevel:  æ—¥å¿—çº§åˆ«
+    * @param msg:       æ—¥å¿—å†…å®¹
+    * @param file:      ä»£ç æ‰€åœ¨æ–‡ä»¶å
+    * @param line:      ä»£ç æ‰€åœ¨è¡Œæ•°
+    */
+    void log(FaLogLevel logLevel, const string& msg, const char* file, int line);
 
 private:
-	int m_nLogLevel;		//ÈÕÖ¾¼¶±ğ
-	string m_strLogFile;	//ÈÕÖ¾ÎÄ¼ş
-	FILE* m_fileOut;		//ÎÄ¼şÊä³ö¶ÔÏó
+    int m_nLogLevel;        //æ—¥å¿—çº§åˆ«
+    string m_strLogFile;    //æ—¥å¿—æ–‡ä»¶
+    FILE* m_fileOut;        //æ–‡ä»¶è¾“å‡ºå¯¹è±¡
 };
 
 #endif //FAFRAME_PUBLIC_FALOGGER_H_

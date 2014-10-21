@@ -1,10 +1,10 @@
 /**************************************************************************************
 *
-* Copyright  (c) 2014, FateDier All rights reserved¡£
-* ÎÄ¼şÃû³Æ:  FaException.h
-* ÃèÊö:      Òì³£´¦ÀíÀà
-* @author:   Íõ³ÉÁú
-* ĞŞ¸Ä¼ÇÂ¼£º
+* Copyright  (c) 2014, FateDier All rights reservedã€‚
+* æ–‡ä»¶åç§°:  FaException.h
+* æè¿°:      å¼‚å¸¸å¤„ç†ç±»
+* @author:   ç‹æˆé¾™
+* ä¿®æ”¹è®°å½•ï¼š
 *
 ***************************************************************************************/
 
@@ -19,17 +19,17 @@ using namespace std;
 class FaException:public exception
 {
 public:
-	FaException(int nErrorCode, const char* pErrorMsg) throw();
-	FaException(int nErrorCode, string strErrorMsg) throw();
-	virtual ~FaException() throw();
-	
-	virtual const char* what() const throw();	//±ê×¼¿âÒì³£»ùÀàµÄ·½·¨
-	int getCode() throw();						//»ñÈ¡Òì³£±àÂë
-	const char* getMsg() const throw();			//»ñÈ¡Òì³£ĞÅÏ¢
-	
+    FaException(int nErrorCode, const char* pErrorMsg) throw();
+    FaException(int nErrorCode, string strErrorMsg) throw();
+    virtual ~FaException() throw();
+
+    virtual const char* what() const throw();   //æ ‡å‡†åº“å¼‚å¸¸åŸºç±»çš„æ–¹æ³•
+    int getCode() throw();                      //è·å–å¼‚å¸¸ç¼–ç 
+    const char* getMsg() const throw();         //è·å–å¼‚å¸¸ä¿¡æ¯
+
 private:
-	int m_nErrorCode;			//Òì³£±àÂë
-	string m_strErrorMsg;		//Òì³£ĞÅÏ¢
+    int m_nErrorCode;           //å¼‚å¸¸ç¼–ç 
+    string m_strErrorMsg;       //å¼‚å¸¸ä¿¡æ¯
 };
 
 #endif //FAFRAME_PUBLIC_FAEXCEPTION_H_

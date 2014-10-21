@@ -1,10 +1,10 @@
 /**************************************************************************************
 *
-* Copyright  (c) 2014, FateDier All rights reserved¡£
-* ÎÄ¼şÃû³Æ:  FaFunc.h
-* ÃèÊö:      ³£ÓÃº¯Êı½Ó¿Ú
-* @author:   Íõ³ÉÁú
-* ĞŞ¸Ä¼ÇÂ¼£º
+* Copyright  (c) 2014, FateDier All rights reservedã€‚
+* æ–‡ä»¶åç§°:  FaFunc.h
+* æè¿°:      å¸¸ç”¨å‡½æ•°æ¥å£
+* @author:   ç‹æˆé¾™
+* ä¿®æ”¹è®°å½•ï¼š
 *
 ***************************************************************************************/
 
@@ -21,33 +21,33 @@
 using namespace std;
 
 /*
-* long×ª»»Îªchar*
-* @param number:     Òª×ª»»µÄlongĞÍÊı×Ö
-* @param str: 	     Ô¤ÏÈ·ÖÅäºÃ¿Õ¼äµÄcharÊı×é£¬ÈİÁ¿ > 10
-* @param nBufferLen: str·ÖÅä¿Õ¼äµÄ´óĞ¡£¬½¨ÒéÓÃsizeof»ñÈ¡
-* @return        Ö¸ÏòstrµÄÖ¸Õë£¬±£´æ×ª»»Íê³ÉµÄ×Ö·û´®
+* longè½¬æ¢ä¸ºchar*
+* @param number:     è¦è½¬æ¢çš„longå‹æ•°å­—
+* @param str:        é¢„å…ˆåˆ†é…å¥½ç©ºé—´çš„charæ•°ç»„ï¼Œå®¹é‡ > 10
+* @param nBufferLen: stråˆ†é…ç©ºé—´çš„å¤§å°ï¼Œå»ºè®®ç”¨sizeofè·å–
+* @return        æŒ‡å‘strçš„æŒ‡é’ˆï¼Œä¿å­˜è½¬æ¢å®Œæˆçš„å­—ç¬¦ä¸²
 */
 char* fa_ltoa(long number, char* str, int nBufferLen);
 
 /*
-* long×ª»»Îªstring
-* @param number: Òª×ª»»µÄlongĞÍÊı×Ö
-* @return        ×ª»»Íê³ÉºóµÄstringÀàĞÍ×Ö·û´®
+* longè½¬æ¢ä¸ºstring
+* @param number: è¦è½¬æ¢çš„longå‹æ•°å­—
+* @return        è½¬æ¢å®Œæˆåçš„stringç±»å‹å­—ç¬¦ä¸²
 */
 string fa_ltostr(long number);
 
 /*
-* ¸ù¾İÖ¸¶¨ÈÕÆÚ·µ»ØÊÇĞÇÆÚ¼¸
-* @param year:  Äê
-* @param month: ÔÂ
-* @param day:   ÈÕ
-* @return       ĞÇÆÚÒ»ÖÁĞÇÆÚÈÕ¶ÔÓ¦ intĞÍ(1 ¡ª¡ª 7)
+* æ ¹æ®æŒ‡å®šæ—¥æœŸè¿”å›æ˜¯æ˜ŸæœŸå‡ 
+* @param year:  å¹´
+* @param month: æœˆ
+* @param day:   æ—¥
+* @return       æ˜ŸæœŸä¸€è‡³æ˜ŸæœŸæ—¥å¯¹åº” intå‹(1 â€”â€” 7)
 */
 int fa_getWeekDay(int year, int month, int day);
 
 /*
-* ·µ»Øµ±Ç°ÏµÍ³Ê±¼ä£¬¾«È·µ½Î¢Ãî¼¶
-* @return		stringÀàĞÍ×Ö·û´®£¬¸ñÊ½ÎªÄêÔÂÈÕÊ±·ÖÃëºÁÃëÎ¢Ãî£¬ÀàËÆ "20140930102408001002"
+* è¿”å›å½“å‰ç³»ç»Ÿæ—¶é—´ï¼Œç²¾ç¡®åˆ°å¾®å¦™çº§
+* @return       stringç±»å‹å­—ç¬¦ä¸²ï¼Œæ ¼å¼ä¸ºå¹´æœˆæ—¥æ—¶åˆ†ç§’æ¯«ç§’å¾®å¦™ï¼Œç±»ä¼¼ "20140930102408001002"
 */
 string fa_getSysTime();
 

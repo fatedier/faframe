@@ -1,9 +1,9 @@
-#ÐèÒªÉú³É¿ÉÖ´ÐÐ³ÌÐòµÄMakefile
+#éœ€è¦ç”Ÿæˆå¯æ‰§è¡Œç¨‹åºçš„Makefile
 
-#³ÌÐò¸ùÄ¿Â¼
+#ç¨‹åºæ ¹ç›®å½•
 top_srcdir	= ..
 
-#Ä¿±ê³ÌÐòÃû
+#ç›®æ ‡ç¨‹åºå
 TARGET = test
 
 CPP_FILES = $(shell ls *.cpp)
@@ -13,22 +13,22 @@ BASE = $(basename $(SRCS))
 OBJS = $(addsuffix .o, $(addprefix obj/,$(BASE)))
 DEPS = $(addsuffix .d, $(addprefix dep/,$(BASE)))
 
-#°üº¬¹«¹²Make¹æÔò
+#åŒ…å«å…¬å…±Makeè§„åˆ™
 include $(top_srcdir)/makeinclude/Make.rules
 
-#¶îÍâÐèÒª°üº¬µÄÍ·ÎÄ¼þµÄÄ¿Â¼Î»ÖÃ
+#é¢å¤–éœ€è¦åŒ…å«çš„å¤´æ–‡ä»¶çš„ç›®å½•ä½ç½®
 INCLUDEDIR := $(INCLUDEDIR)\
 			  -I$(top_srcdir)/public\
 
-#ËùÓÐÒª°üº¬µÄ¾²Ì¬¿âµÄÃû³Æ
+#æ‰€æœ‰è¦åŒ…å«çš„é™æ€åº“çš„åç§°
 LIBS := -lfa_public
 
-#ÉèÖÃÄ¿±ê³ÌÐòÒÀÀµµÄ.oÎÄ¼þ
+#è®¾ç½®ç›®æ ‡ç¨‹åºä¾èµ–çš„.oæ–‡ä»¶
 $(TARGET):$(OBJS) $(LIBS)
 	-rm -f $@
 	$(CXX) -o $(TARGET) $(INCLUDEDIR) $(LDFLAGS) $(OBJS) $(LIBS)
 
-#²âÊÔÊ¹ÓÃ
+#æµ‹è¯•ä½¿ç”¨
 .PHONY:mk
 mk:
 	@echo $(OBJS)

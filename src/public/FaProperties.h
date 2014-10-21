@@ -1,11 +1,11 @@
 /**************************************************************************************
 *
-* Copyright  (c) 2014, FateDier All rights reserved¡£
-* ÎÄ¼şÃû³Æ:  FaProperties.h
-* ÃèÊö:      ÅäÖÃÎÄ¼şÏà¹Ø
-* @author:   Íõ³ÉÁú
-* @×¢Òâ£º	 ¸ù¾İ¼ü²éÕÒÖµÈç¹ûÃ»ÓĞÄ¬ÈÏÖµÊ±ĞèÒª²¶»ñÒì³£
-* ĞŞ¸Ä¼ÇÂ¼£º
+* Copyright  (c) 2014, FateDier All rights reservedã€‚
+* æ–‡ä»¶åç§°:  FaProperties.h
+* æè¿°:      é…ç½®æ–‡ä»¶ç›¸å…³
+* @author:   ç‹æˆé¾™
+* @æ³¨æ„ï¼š    æ ¹æ®é”®æŸ¥æ‰¾å€¼å¦‚æœæ²¡æœ‰é»˜è®¤å€¼æ—¶éœ€è¦æ•è·å¼‚å¸¸
+* ä¿®æ”¹è®°å½•ï¼š
 *
 ***************************************************************************************/
 
@@ -26,31 +26,31 @@ using namespace std;
 class FaProperties
 {
 public:
-	FaProperties();
-	virtual ~FaProperties();
+    FaProperties();
+    virtual ~FaProperties();
 
-/*--³£ÓÃº¯Êı--*/
-	//¼ÓÔØÅäÖÃÎÄ¼ş£¬´íÎóÔòÅ×³öÒì³£
-	void open(const char* sFileName);
-	//Çå¿ÕmapÖĞµÄÄÚÈİ
-	void close();
-	//¸ù¾İ¼ü»ñÈ¡×Ö·û´®£¬Èô²»´æÔÚ£¬Å×³öÒì³£
-	string getString(const string& strKey);
-	//¸ù¾İ¼ü»ñÈ¡×Ö·û´®£¬º¬Ä¬ÈÏÖµ
-	string getString(const string& strKey, const string& strDefaultValue);
-	//¸ù¾İ¼ü»ñÈ¡Êı£¬Èô²»´æÔÚ£¬Å×³öÒì³£
-	int getInt(const string& strKey);
-	//¸ù¾İ¼ü»ñÈ¡Êı£¬º¬Ä¬ÈÏÖµ
-	int getInt(const string& strKey, int nDefaultValue);
-	
-/*--ÄÚ²¿º¯Êı--*/
+/*--å¸¸ç”¨å‡½æ•°--*/
+    //åŠ è½½é…ç½®æ–‡ä»¶ï¼Œé”™è¯¯åˆ™æŠ›å‡ºå¼‚å¸¸
+    void open(const char* sFileName);
+    //æ¸…ç©ºmapä¸­çš„å†…å®¹
+    void close();
+    //æ ¹æ®é”®è·å–å­—ç¬¦ä¸²ï¼Œè‹¥ä¸å­˜åœ¨ï¼ŒæŠ›å‡ºå¼‚å¸¸
+    string getString(const string& strKey);
+    //æ ¹æ®é”®è·å–å­—ç¬¦ä¸²ï¼Œå«é»˜è®¤å€¼
+    string getString(const string& strKey, const string& strDefaultValue);
+    //æ ¹æ®é”®è·å–æ•°ï¼Œè‹¥ä¸å­˜åœ¨ï¼ŒæŠ›å‡ºå¼‚å¸¸
+    int getInt(const string& strKey);
+    //æ ¹æ®é”®è·å–æ•°ï¼Œå«é»˜è®¤å€¼
+    int getInt(const string& strKey, int nDefaultValue);
+
+/*--å†…éƒ¨å‡½æ•°--*/
 private:
-	void parseLineToMap(char* sLineStr);	//½«Ò»ĞĞµÄÄÚÈİ½âÎöÎªKey-Value¸ñÊ½²åÈëmapÖĞ
-	void trim(char* str);					//È¥³ıµôÊ×Î²µÄ¿Õ¸ñºÍTab
-	
+    void parseLineToMap(char* sLineStr);    //å°†ä¸€è¡Œçš„å†…å®¹è§£æä¸ºKey-Valueæ ¼å¼æ’å…¥mapä¸­
+    void trim(char* str);                   //å»é™¤æ‰é¦–å°¾çš„ç©ºæ ¼å’ŒTab
+
 private:
-	string m_strFileName;				//ÎÄ¼şÃû
-	map<string, string> mapLinevalue;	//Ã¿Ò»ĞĞµÄ¼üÖµ¶Ô£¬ÖĞ¼äÓÃ"="ºÅ·Ö¸ô
+    string m_strFileName;               //æ–‡ä»¶å
+    map<string, string> mapLinevalue;   //æ¯ä¸€è¡Œçš„é”®å€¼å¯¹ï¼Œä¸­é—´ç”¨"="å·åˆ†éš”
 };
 
 #endif //FAFRAME_PUBLIC_FAPROPERTIES_H_

@@ -1,11 +1,11 @@
 /**************************************************************************************
 *
-* Copyright  (c) 2014, FateDier All rights reserved¡£
-* ÎÄ¼þÃû³Æ:  FaTime.h
-* ÃèÊö:      Ê±¼äÀà
-* @author:   Íõ³ÉÁú
-* ×¢Òâ£º	 1970ÄêÖ®Ç°µÄÊ±¼ä´¦Àí¿ÉÄÜ»áÓÐÒì³£
-* ÐÞ¸Ä¼ÇÂ¼£º
+* Copyright  (c) 2014, FateDier All rights reservedã€‚
+* æ–‡ä»¶åç§°:  FaTime.h
+* æè¿°:      æ—¶é—´ç±»
+* @author:   çŽ‹æˆé¾™
+* æ³¨æ„ï¼š     1970å¹´ä¹‹å‰çš„æ—¶é—´å¤„ç†å¯èƒ½ä¼šæœ‰å¼‚å¸¸
+* ä¿®æ”¹è®°å½•ï¼š
 *
 ***************************************************************************************/
 
@@ -16,43 +16,43 @@
 
 class FaTime:public FaBaseTime
 {
-/**¹¹Ôì¼°Îö¹¹º¯Êý**/
+/**æž„é€ åŠæžæž„å‡½æ•°**/
 public:
-	FaTime();							//¹¹Ôì¿Õ×Ö·û´®
-	FaTime(const char* sTime);			//¸ù¾Ý×Ö·û´®¹¹ÔìÊ±¼ä¶ÔÏó
-	FaTime(const string& strTime);		//¸ù¾Ý×Ö·û´®¹¹ÔìÊ±¼ä¶ÔÏó
-	virtual ~FaTime();
+    FaTime();                           //æž„é€ ç©ºå­—ç¬¦ä¸²
+    FaTime(const char* sTime);          //æ ¹æ®å­—ç¬¦ä¸²æž„é€ æ—¶é—´å¯¹è±¡
+    FaTime(const string& strTime);      //æ ¹æ®å­—ç¬¦ä¸²æž„é€ æ—¶é—´å¯¹è±¡
+    virtual ~FaTime();
 
-/**³£ÓÃº¯Êý**/
-	virtual time_t mkTime() const;		//»ñÈ¡´Ó1970Äê¿ªÊ¼µ½Ö¸¶¨ÈÕÆÚµÄÃëÊý
-	virtual string getSysTime();		//»ñÈ¡ÏµÍ³Ê±¼ä
-	int getHour() const;				//»ñÈ¡Ð¡Ê±
-	int getMinute() const;				//»ñÈ¡·ÖÖÓ
-	int getSecond() const;				//»ñÈ¡Ãë
-	void addDay(int nDay);				//Ôö¼ÓÌìÊý
-	void addHour(int nHour);			//Ôö¼ÓÐ¡Ê±
-	void addMinute(int nMinute);		//Ôö¼Ó·ÖÖÓ
-	void addSecond(int nSecond);		//Ôö¼ÓÃë
-	//»ùÀàº¯Êý
-	//bool isLeapYear(int year) const;					//ÅÐ¶ÏÊÇ·ñÊÇÈòÄê
-	//int getLastDayOfMonth(int year, int month) const;	//»ñÈ¡Ö¸¶¨ÄêÔÂµÄ×îºóÒ»Ìì
-	//string toString() const;							//·µ»ØÈÕÆÚÊ±¼ä×Ö·û´®
+/**å¸¸ç”¨å‡½æ•°**/
+    virtual time_t mkTime() const;      //èŽ·å–ä»Ž1970å¹´å¼€å§‹åˆ°æŒ‡å®šæ—¥æœŸçš„ç§’æ•°
+    virtual string getSysTime();        //èŽ·å–ç³»ç»Ÿæ—¶é—´
+    int getHour() const;                //èŽ·å–å°æ—¶
+    int getMinute() const;              //èŽ·å–åˆ†é’Ÿ
+    int getSecond() const;              //èŽ·å–ç§’
+    void addDay(int nDay);              //å¢žåŠ å¤©æ•°
+    void addHour(int nHour);            //å¢žåŠ å°æ—¶
+    void addMinute(int nMinute);        //å¢žåŠ åˆ†é’Ÿ
+    void addSecond(int nSecond);        //å¢žåŠ ç§’
+    //åŸºç±»å‡½æ•°
+    //bool isLeapYear(int year) const;                  //åˆ¤æ–­æ˜¯å¦æ˜¯é—°å¹´
+    //int getLastDayOfMonth(int year, int month) const; //èŽ·å–æŒ‡å®šå¹´æœˆçš„æœ€åŽä¸€å¤©
+    //string toString() const;                          //è¿”å›žæ—¥æœŸæ—¶é—´å­—ç¬¦ä¸²
 
-/**ÔËËã·ûÖØÔØ**/
-	FaTime& operator =(const char* sTime);
-	FaTime& operator =(const string& strTime);
-	FaTime& operator =(const FaTime& faTime);
-	friend bool operator >(const FaTime& left, const FaTime& right);
-	friend bool operator >=(const FaTime& left, const FaTime& right);
-	friend bool operator <(const FaTime& left, const FaTime& right);
-	friend bool operator <=(const FaTime& left, const FaTime& right);
-	friend bool operator ==(const FaTime& left, const FaTime& right);
-	friend bool operator !=(const FaTime& left, const FaTime& right);
-	friend int  operator -(const FaTime& left, const FaTime& right);	//·µ»ØÖµÎªÁ½Õß¼ä¸ôµÄÃëÊý
-	
-/**ÄÚ²¿µ÷ÓÃº¯Êý**/
+/**è¿ç®—ç¬¦é‡è½½**/
+    FaTime& operator =(const char* sTime);
+    FaTime& operator =(const string& strTime);
+    FaTime& operator =(const FaTime& faTime);
+    friend bool operator >(const FaTime& left, const FaTime& right);
+    friend bool operator >=(const FaTime& left, const FaTime& right);
+    friend bool operator <(const FaTime& left, const FaTime& right);
+    friend bool operator <=(const FaTime& left, const FaTime& right);
+    friend bool operator ==(const FaTime& left, const FaTime& right);
+    friend bool operator !=(const FaTime& left, const FaTime& right);
+    friend int  operator -(const FaTime& left, const FaTime& right);    //è¿”å›žå€¼ä¸ºä¸¤è€…é—´éš”çš„ç§’æ•°
+
+/**å†…éƒ¨è°ƒç”¨å‡½æ•°**/
 protected:
-	virtual bool verifyFormat();		//¼ì²éÊ±¼ä¸ñÊ½ºÍ×Ö·û´®ÊÇ·ñ·ûºÏÒªÇó
+    virtual bool verifyFormat();        //æ£€æŸ¥æ—¶é—´æ ¼å¼å’Œå­—ç¬¦ä¸²æ˜¯å¦ç¬¦åˆè¦æ±‚
 };
 
 #endif //FAFRAME_PUBLIC_FATIME_H_

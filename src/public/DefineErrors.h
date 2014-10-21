@@ -1,20 +1,20 @@
 /**************************************************************************************
 *
-* Copyright  (c) 2014, FateDier All rights reserved¡£
-* ÎÄ¼şÃû³Æ:  DefineErrors.h
-* ÃèÊö:      Òì³£ºê¶¨Òå
-* @author:   Íõ³ÉÁú
-* ĞŞ¸Ä¼ÇÂ¼£º
+* Copyright  (c) 2014, FateDier All rights reservedã€‚
+* æ–‡ä»¶åç§°:  DefineErrors.h
+* æè¿°:      å¼‚å¸¸å®å®šä¹‰
+* @author:   ç‹æˆé¾™
+* ä¿®æ”¹è®°å½•ï¼š
 *
 ***************************************************************************************/
 
 #ifndef FAFRAME_PUBLIC_DEFINEERRORS_H_
 #define FAFRAME_PUBLIC_DEFINEERRORS_H_
 
-#define ERROR_COMMON		1
-#define ERROR_SYSTEM		2
-#define ERROR_TIME			3
-#define ERROR_MATH			4
-#define ERROR_PROPERTIES	5
+#define ERROR_COMMON        1
+#define ERROR_SYSTEM        2
+#define ERROR_TIME          3
+#define ERROR_MATH          4
+#define ERROR_PROPERTIES    5
 
 #endif //FAFRAME_PUBLIC_DEFINEERRORS_H_

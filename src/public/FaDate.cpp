@@ -1,34 +1,34 @@
 /**************************************************************************************
 *
-* Copyright  (c) 2014, FateDier All rights reserved¡£
-* ÎÄ¼şÃû³Æ:  FaDate.cpp
-* ÃèÊö:      ÈÕÆÚÀà
-* @author:   Íõ³ÉÁú
-* ĞŞ¸Ä¼ÇÂ¼£º
+* Copyright  (c) 2014, FateDier All rights reservedã€‚
+* æ–‡ä»¶åç§°:  FaDate.cpp
+* æè¿°:      æ—¥æœŸç±»
+* @author:   ç‹æˆé¾™
+* ä¿®æ”¹è®°å½•ï¼š
 *
 ***************************************************************************************/
 
 #include "FaDate.h"
 
-//¹¹Ôì¿Õ×Ö·û´®
+//æ„é€ ç©ºå­—ç¬¦ä¸²
 FaDate::FaDate()
-	:FaBaseTime()
+    :FaBaseTime()
 {
-	m_strDateTime = "19000101";
+    m_strDateTime = "19000101";
 }
 
-//¸ù¾İ×Ö·û´®¹¹ÔìÊ±¼ä¶ÔÏó
+//æ ¹æ®å­—ç¬¦ä¸²æ„é€ æ—¶é—´å¯¹è±¡
 FaDate::FaDate(const char* sDate)
-	:FaBaseTime(sDate)
+    :FaBaseTime(sDate)
 {
-	this->verifyFormat();
+    this->verifyFormat();
 }
 
-//¸ù¾İ×Ö·û´®¹¹ÔìÊ±¼ä¶ÔÏó
+//æ ¹æ®å­—ç¬¦ä¸²æ„é€ æ—¶é—´å¯¹è±¡
 FaDate::FaDate(const string& strDate)
-	:FaBaseTime(strDate)
+    :FaBaseTime(strDate)
 {
-	this->verifyFormat();
+    this->verifyFormat();
 }
 
 FaDate::~FaDate()
@@ -36,11 +36,11 @@ FaDate::~FaDate()
 }
 
 
-/**³£ÓÃº¯Êı**/
-//»ñÈ¡´Ó1970Äê¿ªÊ¼µ½Ö¸¶¨ÈÕÆÚµÄÃëÊı
+/**å¸¸ç”¨å‡½æ•°**/
+//è·å–ä»1970å¹´å¼€å§‹åˆ°æŒ‡å®šæ—¥æœŸçš„ç§’æ•°
 time_t FaDate::mkTime() const
 {
-	struct tm tmTime;
+    struct tm tmTime;
 
     memset(&tmTime, 0, sizeof(tmTime));
     tmTime.tm_year = this->getYear() - 1900;
@@ -53,186 +53,186 @@ time_t FaDate::mkTime() const
     return mktime(&tmTime);
 }
 
-//»ñÈ¡ÏµÍ³Ê±¼ä
+//è·å–ç³»ç»Ÿæ—¶é—´
 string FaDate::getSysTime()
 {
-	string strSysTime = fa_getSysTime();
-	m_strDateTime = strSysTime.substr(0, 8);
-	return m_strDateTime;
+    string strSysTime = fa_getSysTime();
+    m_strDateTime = strSysTime.substr(0, 8);
+    return m_strDateTime;
 }
 
-//»ñÈ¡Äê·İ
+//è·å–å¹´ä»½
 int FaDate::getYear() const
 {
-	return atoi(m_strDateTime.substr(0, 4).c_str());
+    return atoi(m_strDateTime.substr(0, 4).c_str());
 }
 
-//»ñÈ¡ÔÂ·İ
+//è·å–æœˆä»½
 int FaDate::getMonth() const
 {
-	return atoi(m_strDateTime.substr(4, 2).c_str());
+    return atoi(m_strDateTime.substr(4, 2).c_str());
 }
 
-//»ñÈ¡ËùÊôÔÂ·İµÄµÚ¼¸Ìì
+//è·å–æ‰€å±æœˆä»½çš„ç¬¬å‡ å¤©
 int FaDate::getDay() const
 {
-	return atoi(m_strDateTime.substr(6, 2).c_str());
+    return atoi(m_strDateTime.substr(6, 2).c_str());
 }
 
-//Ôö¼ÓÌìÊı
+//å¢åŠ å¤©æ•°
 void FaDate::addDay(int nDay)
 {
-	this->addSecond(nDay*24*60*60);
+    this->addSecond(nDay*24*60*60);
 }
 
-//Ôö¼ÓĞ¡Ê±
+//å¢åŠ å°æ—¶
 void FaDate::addHour(int nHour)
 {
-	this->addSecond(nHour*60*60);
+    this->addSecond(nHour*60*60);
 }
 
-//Ôö¼Ó·ÖÖÓ
+//å¢åŠ åˆ†é’Ÿ
 void FaDate::addMinute(int nMinute)
 {
-	this->addSecond(nMinute*60);
+    this->addSecond(nMinute*60);
 }
 
-//Ôö¼ÓÃë
+//å¢åŠ ç§’
 void FaDate::addSecond(int nSecond)
 {
-	time_t timer = this->mkTime() + nSecond;
-	
-	struct tm *tmNew;
-	tmNew = localtime(&timer);
-	
-	char sFormat[15] = {0};
-	snprintf(sFormat, sizeof(sFormat), "%04d%02d%02d", tmNew->tm_year+1900, \
-			tmNew->tm_mon+1, tmNew->tm_mday);
-	
-	m_strDateTime = sFormat;
+    time_t timer = this->mkTime() + nSecond;
+
+    struct tm *tmNew;
+    tmNew = localtime(&timer);
+
+    char sFormat[15] = {0};
+    snprintf(sFormat, sizeof(sFormat), "%04d%02d%02d", tmNew->tm_year+1900, \
+            tmNew->tm_mon+1, tmNew->tm_mday);
+
+    m_strDateTime = sFormat;
 }
 
 
 
 
-/**ÔËËã·ûÖØÔØ**/
+/**è¿ç®—ç¬¦é‡è½½**/
 FaDate& FaDate::operator =(const char* sDate)
 {
-	m_strDateTime = sDate;
-	this->verifyFormat();
-	return *this;
+    m_strDateTime = sDate;
+    this->verifyFormat();
+    return *this;
 }
 
 FaDate& FaDate::operator =(const string& strDate)
 {
-	m_strDateTime = strDate;
-	this->verifyFormat();
-	return *this;
+    m_strDateTime = strDate;
+    this->verifyFormat();
+    return *this;
 }
 
 FaDate& FaDate::operator =(const FaDate& faDate)
 {
-	this->m_strDateTime = faDate.m_strDateTime;
-	return *this;
+    this->m_strDateTime = faDate.m_strDateTime;
+    return *this;
 }
 
 bool operator >(const FaDate& left, const FaDate& right)
 {
-	if (strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) > 0)
-	{
-		return true;
-	}
-	return false;
+    if (strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) > 0)
+    {
+        return true;
+    }
+    return false;
 }
 
 bool operator >=(const FaDate& left, const FaDate& right)
 {
-	if (strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) >= 0)
-	{
-		return true;
-	}
-	return false;
+    if (strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) >= 0)
+    {
+        return true;
+    }
+    return false;
 }
 
 bool operator <(const FaDate& left, const FaDate& right)
 {
-	if (strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) < 0)
-	{
-		return true;
-	}
-	return false;
+    if (strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) < 0)
+    {
+        return true;
+    }
+    return false;
 }
 
 bool operator <=(const FaDate& left, const FaDate& right)
 {
-	if (strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) <= 0)
-	{
-		return true;
-	}
-	return false;
+    if (strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) <= 0)
+    {
+        return true;
+    }
+    return false;
 }
 
 bool operator ==(const FaDate& left, const FaDate& right)
 {
-	if (strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) == 0)
-	{
-		return true;
-	}
-	return false;
+    if (strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) == 0)
+    {
+        return true;
+    }
+    return false;
 }
 
 bool operator !=(const FaDate& left, const FaDate& right)
 {
-	if (strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) != 0)
-	{
-		return true;
-	}
-	return false;
+    if (strcmp(left.m_strDateTime.c_str(), right.m_strDateTime.c_str()) != 0)
+    {
+        return true;
+    }
+    return false;
 }
 
-//·µ»ØÖµÎªÁ½Õß¼ä¸ôµÄÃëÊı£¨Ö»ÄÜÓÃÓÚ¼ÆËã1970ÄêÖ®ºóµÄÊ±¼ä£©
+//è¿”å›å€¼ä¸ºä¸¤è€…é—´éš”çš„ç§’æ•°ï¼ˆåªèƒ½ç”¨äºè®¡ç®—1970å¹´ä¹‹åçš„æ—¶é—´ï¼‰
 int operator -(const FaDate& left, const FaDate& right)
 {
-	struct tm tmLeft,tmRight;
-	memset(&tmLeft, 0, sizeof(tmLeft));
-	memset(&tmLeft, 0, sizeof(tmRight));
+    struct tm tmLeft,tmRight;
+    memset(&tmLeft, 0, sizeof(tmLeft));
+    memset(&tmLeft, 0, sizeof(tmRight));
 
-	tmLeft.tm_year = left.getYear() - 1900;
-	tmLeft.tm_mon = left.getMonth() - 1;
-	tmLeft.tm_mday = left.getDay();
+    tmLeft.tm_year = left.getYear() - 1900;
+    tmLeft.tm_mon = left.getMonth() - 1;
+    tmLeft.tm_mday = left.getDay();
     tmLeft.tm_hour = 0;
     tmLeft.tm_min = 0;
     tmLeft.tm_sec = 0;
-    
+
     tmRight.tm_year = right.getYear() - 1900;
-	tmRight.tm_mon = right.getMonth() - 1;
-	tmRight.tm_mday = right.getDay();
+    tmRight.tm_mon = right.getMonth() - 1;
+    tmRight.tm_mday = right.getDay();
     tmRight.tm_hour = 0;
     tmRight.tm_min = 0;
     tmRight.tm_sec = 0;
-    
+
     return (int)(mktime(&tmLeft) - mktime(&tmRight));
 }
 
 
-/**ÄÚ²¿µ÷ÓÃº¯Êı**/
-//¼ì²éÊ±¼ä¸ñÊ½ºÍ×Ö·û´®ÊÇ·ñ·ûºÏÒªÇó
+/**å†…éƒ¨è°ƒç”¨å‡½æ•°**/
+//æ£€æŸ¥æ—¶é—´æ ¼å¼å’Œå­—ç¬¦ä¸²æ˜¯å¦ç¬¦åˆè¦æ±‚
 bool FaDate::verifyFormat()
 {
-	//¼ì²éÊ±¼ä×Ö·û´®ÊÇ·ñÈ«¶¼ÊÇÊı×Ö
-	for (int i=0; i<m_strDateTime.size(); i++)
-	{
-		if (!isdigit(m_strDateTime[i]))
-		{
-			throw FaException(ERROR_TIME, "Ê±¼ä×Ö·û´®º¬ÓĞ·ÇÊı×Ö×Ö·û£¡");
-		}
-	}
-	
-	if (m_strDateTime.size() != 8)
-	{
-		throw FaException(ERROR_TIME, "ÈÕÆÚ¸ñÊ½³¤¶È´íÎó£¡");
-	}
-	this->verifyDate(m_strDateTime);
-	
-	return true;
+    //æ£€æŸ¥æ—¶é—´å­—ç¬¦ä¸²æ˜¯å¦å…¨éƒ½æ˜¯æ•°å­—
+    for (int i=0; i<m_strDateTime.size(); i++)
+    {
+        if (!isdigit(m_strDateTime[i]))
+        {
+            throw FaException(ERROR_TIME, "æ—¶é—´å­—ç¬¦ä¸²å«æœ‰éæ•°å­—å­—ç¬¦ï¼");
+        }
+    }
+
+    if (m_strDateTime.size() != 8)
+    {
+        throw FaException(ERROR_TIME, "æ—¥æœŸæ ¼å¼é•¿åº¦é”™è¯¯ï¼");
+    }
+    this->verifyDate(m_strDateTime);
+
+    return true;
 }

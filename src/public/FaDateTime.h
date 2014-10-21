@@ -1,11 +1,11 @@
 /**************************************************************************************
 *
-* Copyright  (c) 2014, FateDier All rights reserved¡£
-* ÎÄ¼þÃû³Æ:  FaDateTime.h
-* ÃèÊö:      ÈÕÆÚÊ±¼äÀà
-* @author:   Íõ³ÉÁú
-* ×¢Òâ£º	 1970ÄêÖ®Ç°µÄÊ±¼ä´¦Àí¿ÉÄÜ»áÓÐÒì³£
-* ÐÞ¸Ä¼ÇÂ¼£º
+* Copyright  (c) 2014, FateDier All rights reservedã€‚
+* æ–‡ä»¶åç§°:  FaDateTime.h
+* æè¿°:      æ—¥æœŸæ—¶é—´ç±»
+* @author:   çŽ‹æˆé¾™
+* æ³¨æ„ï¼š     1970å¹´ä¹‹å‰çš„æ—¶é—´å¤„ç†å¯èƒ½ä¼šæœ‰å¼‚å¸¸
+* ä¿®æ”¹è®°å½•ï¼š
 *
 ***************************************************************************************/
 
@@ -18,47 +18,47 @@
 
 class FaDateTime:public FaBaseTime
 {
-/**¹¹Ôì¼°Îö¹¹º¯Êý**/
+/**æž„é€ åŠæžæž„å‡½æ•°**/
 public:
-	FaDateTime();							//¹¹Ôì¿Õ×Ö·û´®
-	FaDateTime(const char* sDateTime);		//¸ù¾Ý×Ö·û´®¹¹ÔìÊ±¼ä¶ÔÏó
-	FaDateTime(const string& strDateTime);	//¸ù¾Ý×Ö·û´®¹¹ÔìÊ±¼ä¶ÔÏó
-	virtual ~FaDateTime();
+    FaDateTime();                           //æž„é€ ç©ºå­—ç¬¦ä¸²
+    FaDateTime(const char* sDateTime);      //æ ¹æ®å­—ç¬¦ä¸²æž„é€ æ—¶é—´å¯¹è±¡
+    FaDateTime(const string& strDateTime);  //æ ¹æ®å­—ç¬¦ä¸²æž„é€ æ—¶é—´å¯¹è±¡
+    virtual ~FaDateTime();
 
-/**³£ÓÃº¯Êý**/
-	virtual time_t mkTime() const;		//»ñÈ¡´Ó1970Äê¿ªÊ¼µ½Ö¸¶¨ÈÕÆÚµÄÃëÊý
-	virtual string getSysTime();		//»ñÈ¡ÏµÍ³Ê±¼ä
-	int getYear() const;				//»ñÈ¡Äê·Ý
-	int getMonth() const;				//»ñÈ¡ÔÂ·Ý
-	int getDay() const;					//»ñÈ¡ËùÊôÔÂ·ÝµÄµÚ¼¸Ìì
-	int getHour() const;				//»ñÈ¡Ð¡Ê±
-	int getMinute() const;				//»ñÈ¡·ÖÖÓ
-	int getSecond() const;				//»ñÈ¡Ãë
-	void addDay(int nDay);				//Ôö¼ÓÌìÊý
-	void addHour(int nHour);			//Ôö¼ÓÐ¡Ê±
-	void addMinute(int nMinute);		//Ôö¼Ó·ÖÖÓ
-	void addSecond(int nSecond);		//Ôö¼ÓÃë
-	//»ùÀàº¯Êý
-	//bool isLeapYear(int year) const;					//ÅÐ¶ÏÊÇ·ñÊÇÈòÄê
-	//int getLastDayOfMonth(int year, int month) const;	//»ñÈ¡Ö¸¶¨ÄêÔÂµÄ×îºóÒ»Ìì
-	//string toString() const;							//·µ»ØÈÕÆÚÊ±¼ä×Ö·û´®
+/**å¸¸ç”¨å‡½æ•°**/
+    virtual time_t mkTime() const;      //èŽ·å–ä»Ž1970å¹´å¼€å§‹åˆ°æŒ‡å®šæ—¥æœŸçš„ç§’æ•°
+    virtual string getSysTime();        //èŽ·å–ç³»ç»Ÿæ—¶é—´
+    int getYear() const;                //èŽ·å–å¹´ä»½
+    int getMonth() const;               //èŽ·å–æœˆä»½
+    int getDay() const;                 //èŽ·å–æ‰€å±žæœˆä»½çš„ç¬¬å‡ å¤©
+    int getHour() const;                //èŽ·å–å°æ—¶
+    int getMinute() const;              //èŽ·å–åˆ†é’Ÿ
+    int getSecond() const;              //èŽ·å–ç§’
+    void addDay(int nDay);              //å¢žåŠ å¤©æ•°
+    void addHour(int nHour);            //å¢žåŠ å°æ—¶
+    void addMinute(int nMinute);        //å¢žåŠ åˆ†é’Ÿ
+    void addSecond(int nSecond);        //å¢žåŠ ç§’
+    //åŸºç±»å‡½æ•°
+    //bool isLeapYear(int year) const;                  //åˆ¤æ–­æ˜¯å¦æ˜¯é—°å¹´
+    //int getLastDayOfMonth(int year, int month) const; //èŽ·å–æŒ‡å®šå¹´æœˆçš„æœ€åŽä¸€å¤©
+    //string toString() const;                          //è¿”å›žæ—¥æœŸæ—¶é—´å­—ç¬¦ä¸²
 
-/**ÔËËã·ûÖØÔØ**/
-	FaDateTime& operator =(const char* sDateTime);
-	FaDateTime& operator =(const string& strDateTime);
-	FaDateTime& operator =(const FaDateTime& faDateTime);
-	friend bool operator >(const FaDateTime& left, const FaDateTime& right);
-	friend bool operator >=(const FaDateTime& left, const FaDateTime& right);
-	friend bool operator <(const FaDateTime& left, const FaDateTime& right);
-	friend bool operator <=(const FaDateTime& left, const FaDateTime& right);
-	friend bool operator ==(const FaDateTime& left, const FaDateTime& right);
-	friend bool operator !=(const FaDateTime& left, const FaDateTime& right);
-	//·µ»ØÖµÎªÁ½Õß¼ä¸ôµÄÃëÊý£¨Ö»ÄÜÓÃÓÚ¼ÆËã1970ÄêÖ®ºóµÄÊ±¼ä£©
-	friend int  operator -(const FaDateTime& left, const FaDateTime& right);
-	
-/**ÄÚ²¿µ÷ÓÃº¯Êý**/
+/**è¿ç®—ç¬¦é‡è½½**/
+    FaDateTime& operator =(const char* sDateTime);
+    FaDateTime& operator =(const string& strDateTime);
+    FaDateTime& operator =(const FaDateTime& faDateTime);
+    friend bool operator >(const FaDateTime& left, const FaDateTime& right);
+    friend bool operator >=(const FaDateTime& left, const FaDateTime& right);
+    friend bool operator <(const FaDateTime& left, const FaDateTime& right);
+    friend bool operator <=(const FaDateTime& left, const FaDateTime& right);
+    friend bool operator ==(const FaDateTime& left, const FaDateTime& right);
+    friend bool operator !=(const FaDateTime& left, const FaDateTime& right);
+    //è¿”å›žå€¼ä¸ºä¸¤è€…é—´éš”çš„ç§’æ•°ï¼ˆåªèƒ½ç”¨äºŽè®¡ç®—1970å¹´ä¹‹åŽçš„æ—¶é—´ï¼‰
+    friend int  operator -(const FaDateTime& left, const FaDateTime& right);
+
+/**å†…éƒ¨è°ƒç”¨å‡½æ•°**/
 protected:
-	virtual bool verifyFormat();		//¼ì²éÊ±¼ä¸ñÊ½ºÍ×Ö·û´®ÊÇ·ñ·ûºÏÒªÇó
+    virtual bool verifyFormat();        //æ£€æŸ¥æ—¶é—´æ ¼å¼å’Œå­—ç¬¦ä¸²æ˜¯å¦ç¬¦åˆè¦æ±‚
 };
 
 #endif //FAFRAME_PUBLIC_FADATETIME_H_

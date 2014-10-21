@@ -1,10 +1,10 @@
 /**************************************************************************************
 *
-* Copyright  (c) 2014, FateDier All rights reserved¡£
-* ÎÄ¼şÃû³Æ:  FaProperties.cpp
-* ÃèÊö:      ÅäÖÃÎÄ¼şÏà¹Ø
-* @author:   Íõ³ÉÁú
-* ĞŞ¸Ä¼ÇÂ¼£º
+* Copyright  (c) 2014, FateDier All rights reservedã€‚
+* æ–‡ä»¶åç§°:  FaProperties.cpp
+* æè¿°:      é…ç½®æ–‡ä»¶ç›¸å…³
+* @author:   ç‹æˆé¾™
+* ä¿®æ”¹è®°å½•ï¼š
 *
 ***************************************************************************************/
 
@@ -20,150 +20,150 @@ FaProperties::~FaProperties()
 {
 }
 
-/*--³£ÓÃº¯Êı--*/
-//¼ÓÔØÅäÖÃÎÄ¼ş£¬´íÎóÔòÅ×³öÒì³£
+/*--å¸¸ç”¨å‡½æ•°--*/
+//åŠ è½½é…ç½®æ–‡ä»¶ï¼Œé”™è¯¯åˆ™æŠ›å‡ºå¼‚å¸¸
 void FaProperties::open(const char* sFileName)
 {
-	m_strFileName = sFileName;
-	
-	//ÒÔÖ»¶Á·½Ê½´ò¿ªÖ¸¶¨ÎÄ¼ş
-	fstream file(m_strFileName.c_str(), ios::in);
-	
-	char sLineStr[MAX_LINE_LENGTH] = {0};
-	if (file.is_open())
-	{
-		while (file.getline(sLineStr, MAX_LINE_LENGTH))
-		{
-			this->parseLineToMap(sLineStr);
-		}
-		file.close();
-	}
-	else
-	{
-		//´ò¿ªÎÄ¼şÊ§°Ü
-		throw FaException(ERROR_PROPERTIES, "¶ÁÈ¡ÎÄ¼şÊ§°Ü£¡");
-	}
+    m_strFileName = sFileName;
+
+    //ä»¥åªè¯»æ–¹å¼æ‰“å¼€æŒ‡å®šæ–‡ä»¶
+    fstream file(m_strFileName.c_str(), ios::in);
+
+    char sLineStr[MAX_LINE_LENGTH] = {0};
+    if (file.is_open())
+    {
+        while (file.getline(sLineStr, MAX_LINE_LENGTH))
+        {
+            this->parseLineToMap(sLineStr);
+        }
+        file.close();
+    }
+    else
+    {
+        //æ‰“å¼€æ–‡ä»¶å¤±è´¥
+        throw FaException(ERROR_PROPERTIES, "è¯»å–æ–‡ä»¶å¤±è´¥ï¼");
+    }
 }
 
-//Çå¿ÕmapÖĞµÄÄÚÈİ
+//æ¸…ç©ºmapä¸­çš„å†…å®¹
 void FaProperties::close()
 {
-	mapLinevalue.clear();
+    mapLinevalue.clear();
 }
-	
-//¸ù¾İ¼ü»ñÈ¡×Ö·û´®£¬Èô²»´æÔÚ£¬Å×³öÒì³£
+
+//æ ¹æ®é”®è·å–å­—ç¬¦ä¸²ï¼Œè‹¥ä¸å­˜åœ¨ï¼ŒæŠ›å‡ºå¼‚å¸¸
 string FaProperties::getString(const string& strKey)
 {
-	map<string, string>::iterator iter;
-	iter = mapLinevalue.find(strKey);
-	if (iter != mapLinevalue.end())
-	{
-		return iter->second;
-	}
-	else
-	{
-		string strErrorMsg = "Î´ÕÒµ½ [" + strKey + "] ¶ÔÓ¦µÄÖµ£¡";
-		throw FaException(ERROR_PROPERTIES, strErrorMsg);
-	}
+    map<string, string>::iterator iter;
+    iter = mapLinevalue.find(strKey);
+    if (iter != mapLinevalue.end())
+    {
+        return iter->second;
+    }
+    else
+    {
+        string strErrorMsg = "æœªæ‰¾åˆ° [" + strKey + "] å¯¹åº”çš„å€¼ï¼";
+        throw FaException(ERROR_PROPERTIES, strErrorMsg);
+    }
 }
 
-//¸ù¾İ¼ü»ñÈ¡×Ö·û´®£¬º¬Ä¬ÈÏÖµ
+//æ ¹æ®é”®è·å–å­—ç¬¦ä¸²ï¼Œå«é»˜è®¤å€¼
 string FaProperties::getString(const string& strKey, const string& strDefaultValue)
 {
-	map<string, string>::iterator iter;
-	iter = mapLinevalue.find(strKey);
-	if (iter != mapLinevalue.end())
-	{
-		return iter->second;
-	}
-	else
-	{
-		string strReturn = strDefaultValue;
-		return strReturn;
-	}
+    map<string, string>::iterator iter;
+    iter = mapLinevalue.find(strKey);
+    if (iter != mapLinevalue.end())
+    {
+        return iter->second;
+    }
+    else
+    {
+        string strReturn = strDefaultValue;
+        return strReturn;
+    }
 }
 
-//¸ù¾İ¼ü»ñÈ¡Êı£¬Èô²»´æÔÚ£¬Å×³öÒì³£
+//æ ¹æ®é”®è·å–æ•°ï¼Œè‹¥ä¸å­˜åœ¨ï¼ŒæŠ›å‡ºå¼‚å¸¸
 int FaProperties::getInt(const string& strKey)
 {
-	//²éÕÒ×Ö·û´®£¬Î´ÕÒµ½»áÅ×³öÒì³£
-	string strValue = this->getString(strKey);
-	//½«²éµ½µÄÖµ×ª»»ÎªintĞÍ·µ»Ø
-	return atoi(strValue.c_str());
+    //æŸ¥æ‰¾å­—ç¬¦ä¸²ï¼Œæœªæ‰¾åˆ°ä¼šæŠ›å‡ºå¼‚å¸¸
+    string strValue = this->getString(strKey);
+    //å°†æŸ¥åˆ°çš„å€¼è½¬æ¢ä¸ºintå‹è¿”å›
+    return atoi(strValue.c_str());
 }
 
-//¸ù¾İ¼ü»ñÈ¡Êı£¬º¬Ä¬ÈÏÖµ
+//æ ¹æ®é”®è·å–æ•°ï¼Œå«é»˜è®¤å€¼
 int FaProperties::getInt(const string& strKey, int nDefaultValue)
 {
-	stringstream os;
-	os << nDefaultValue;
-	string strValue = this->getString(strKey, os.str());
-	return atoi(strValue.c_str());
+    stringstream os;
+    os << nDefaultValue;
+    string strValue = this->getString(strKey, os.str());
+    return atoi(strValue.c_str());
 }
-	
 
 
-/*--ÄÚ²¿º¯Êı--*/
-//½«Ò»ĞĞµÄÄÚÈİ½âÎöÎªKey-Value¸ñÊ½²åÈëmapÖĞ
+
+/*--å†…éƒ¨å‡½æ•°--*/
+//å°†ä¸€è¡Œçš„å†…å®¹è§£æä¸ºKey-Valueæ ¼å¼æ’å…¥mapä¸­
 void FaProperties::parseLineToMap(char* sLineStr)
 {
-	string strKey;
-	string strValue;
-	
-	this->trim(sLineStr);
-	char* p = strchr(sLineStr, '#');	//È¥³ıµô×¢ÊÍ²¿·Ö
-	if (NULL != p)
-	{
-		*p = '\0';
-	}
-	//Èç¹ûÖ»ÓĞ×¢ÊÍ²¿·Ö£¬Ö±½Ó·µ»Ø
-	if ('\0' == *sLineStr)
-	{
-		return;
-	}
-	//²éÕÒ·Ö¸ô·û"="
-	p = strchr(sLineStr, '=');
-	//Èç¹û²»´æÔÚ£¬ÔòÎªÎŞĞ§µÄÅäÖÃ
-	if (NULL == p)
-	{
-		return;
-	}
-	//½âÎöÎªKey-Value¸ñÊ½£¬±£´æÔÚmapÖĞ
-	*p = '\0';
-	p++;
-	this->trim(sLineStr);
-	this->trim(p);
-	strKey = sLineStr;
-	strValue = p;
-	mapLinevalue[strKey] = strValue;
+    string strKey;
+    string strValue;
+
+    this->trim(sLineStr);
+    char* p = strchr(sLineStr, '#');    //å»é™¤æ‰æ³¨é‡Šéƒ¨åˆ†
+    if (NULL != p)
+    {
+        *p = '\0';
+    }
+    //å¦‚æœåªæœ‰æ³¨é‡Šéƒ¨åˆ†ï¼Œç›´æ¥è¿”å›
+    if ('\0' == *sLineStr)
+    {
+        return;
+    }
+    //æŸ¥æ‰¾åˆ†éš”ç¬¦"="
+    p = strchr(sLineStr, '=');
+    //å¦‚æœä¸å­˜åœ¨ï¼Œåˆ™ä¸ºæ— æ•ˆçš„é…ç½®
+    if (NULL == p)
+    {
+        return;
+    }
+    //è§£æä¸ºKey-Valueæ ¼å¼ï¼Œä¿å­˜åœ¨mapä¸­
+    *p = '\0';
+    p++;
+    this->trim(sLineStr);
+    this->trim(p);
+    strKey = sLineStr;
+    strValue = p;
+    mapLinevalue[strKey] = strValue;
 }
 
-//È¥³ıµôÊ×Î²µÄ¿Õ¸ñºÍTab
+//å»é™¤æ‰é¦–å°¾çš„ç©ºæ ¼å’ŒTab
 void FaProperties::trim(char* str)
 {
-	char* head = str;
-	char* tail = str + strlen(str);
-	//Ìø¹ıÇ°ÃæµÄ¿Õ¸ñºÍTab
-	while (*head == ' ' || *head == '\t')
-	{
-		head++;
-	}
-	//Ìø¹ıºóÃæµÄ¿Õ¸ñºÍTab
-	if (head != tail)
-	{
-		tail--;
-		while (*tail == ' ' || *tail == '\t' || *tail == '\0')
-		{
-			tail--;
-		}
-		*(++tail) = '\0';
-	}
-	//½«·Ç¿ÕµÄ×Ö·û´®ÒÆµ½Ç°Ãæ
-	while (head != tail)
-	{
-		*str = *head;
-		str++;
-		head++;
-	}
-	*str = '\0';
+    char* head = str;
+    char* tail = str + strlen(str);
+    //è·³è¿‡å‰é¢çš„ç©ºæ ¼å’ŒTab
+    while (*head == ' ' || *head == '\t')
+    {
+        head++;
+    }
+    //è·³è¿‡åé¢çš„ç©ºæ ¼å’ŒTab
+    if (head != tail)
+    {
+        tail--;
+        while (*tail == ' ' || *tail == '\t' || *tail == '\0')
+        {
+            tail--;
+        }
+        *(++tail) = '\0';
+    }
+    //å°†éç©ºçš„å­—ç¬¦ä¸²ç§»åˆ°å‰é¢
+    while (head != tail)
+    {
+        *str = *head;
+        str++;
+        head++;
+    }
+    *str = '\0';
 }

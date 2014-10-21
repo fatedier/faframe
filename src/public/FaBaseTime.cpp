@@ -1,10 +1,10 @@
 /**************************************************************************************
 *
-* Copyright  (c) 2014, FateDier All rights reserved¡£
-* ÎÄ¼şÃû³Æ:  FaBaseTime.cpp
-* ÃèÊö:      ÈÕÆÚÊ±¼äÏà¹ØµÄ»ùÀà
-* @author:   Íõ³ÉÁú
-* ĞŞ¸Ä¼ÇÂ¼£º
+* Copyright  (c) 2014, FateDier All rights reservedã€‚
+* æ–‡ä»¶åç§°:  FaBaseTime.cpp
+* æè¿°:      æ—¥æœŸæ—¶é—´ç›¸å…³çš„åŸºç±»
+* @author:   ç‹æˆé¾™
+* ä¿®æ”¹è®°å½•ï¼š
 *
 ***************************************************************************************/
 
@@ -12,24 +12,24 @@
 
 int FaBaseTime::m_nMonthDayC[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 int FaBaseTime::m_nMonthDayS[] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-	
-/**¹¹Ôì¼°Îö¹¹º¯Êı**/
-//¹¹Ôì³õÊ¼×Ö·û´®
+
+/**æ„é€ åŠææ„å‡½æ•°**/
+//æ„é€ åˆå§‹å­—ç¬¦ä¸²
 FaBaseTime::FaBaseTime()
 {
-	m_strDateTime = "";
+    m_strDateTime = "";
 }
 
-//¸ù¾İ×Ö·û´®¹¹ÔìÊ±¼ä¶ÔÏó
+//æ ¹æ®å­—ç¬¦ä¸²æ„é€ æ—¶é—´å¯¹è±¡
 FaBaseTime::FaBaseTime(const char* sDateTime)
 {
-	m_strDateTime = sDateTime;
+    m_strDateTime = sDateTime;
 }
 
-//¸ù¾İ×Ö·û´®¹¹ÔìÊ±¼ä¶ÔÏó
+//æ ¹æ®å­—ç¬¦ä¸²æ„é€ æ—¶é—´å¯¹è±¡
 FaBaseTime::FaBaseTime(const string& strDateTime)
 {
-	m_strDateTime = strDateTime;
+    m_strDateTime = strDateTime;
 }
 
 FaBaseTime::~FaBaseTime()
@@ -38,81 +38,81 @@ FaBaseTime::~FaBaseTime()
 
 
 
-/**³£ÓÃº¯Êı**/
-//ÅĞ¶ÏÊÇ·ñÊÇÈòÄê
+/**å¸¸ç”¨å‡½æ•°**/
+//åˆ¤æ–­æ˜¯å¦æ˜¯é—°å¹´
 bool FaBaseTime::isLeapYear(int year) const
 {
-	if (year%100 == 0)
-	{
-		return (year%400 == 0);
-	}
-	else
-	{
-		return (year%4 == 0);
-	}
+    if (year%100 == 0)
+    {
+        return (year%400 == 0);
+    }
+    else
+    {
+        return (year%4 == 0);
+    }
 }
 
-//»ñÈ¡Ö¸¶¨ÄêÔÂµÄ×îºóÒ»Ìì
+//è·å–æŒ‡å®šå¹´æœˆçš„æœ€åä¸€å¤©
 int FaBaseTime::getLastDayOfMonth(int year, int month) const
 {
-	//ÈòÄê
-	if (this->isLeapYear(year))
-	{
-		return m_nMonthDayS[month-1];
-	}
-	//·ÇÈòÄê
-	else
-	{
-		return m_nMonthDayC[month-1];
-	}
+    //é—°å¹´
+    if (this->isLeapYear(year))
+    {
+        return m_nMonthDayS[month-1];
+    }
+    //éé—°å¹´
+    else
+    {
+        return m_nMonthDayC[month-1];
+    }
 }
 
-//·µ»ØÈÕÆÚÊ±¼ä×Ö·û´®
+//è¿”å›æ—¥æœŸæ—¶é—´å­—ç¬¦ä¸²
 string FaBaseTime::toString() const
 {
-	return m_strDateTime;
+    return m_strDateTime;
 }
 
 
-/**ÄÚ²¿µ÷ÓÃº¯Êı**/
-//¼ì²é8Î»×Ö·ûµÄÈÕÆÚ¸ñÊ½ÊÇ·ñÕıÈ·
+/**å†…éƒ¨è°ƒç”¨å‡½æ•°**/
+//æ£€æŸ¥8ä½å­—ç¬¦çš„æ—¥æœŸæ ¼å¼æ˜¯å¦æ­£ç¡®
 void FaBaseTime::verifyDate(const string& strDate)
 {
-	int year = atoi(strDate.substr(0, 4).c_str());
-	int month = atoi(strDate.substr(4, 2).c_str());
-	int day = atoi(strDate.substr(6, 2).c_str());
-	
-	if (year <= 0 || year > 9999)
-	{
-		throw FaException(ERROR_TIME, "Äê·İ´íÎó£¡");
-	}
-	if (month <= 0 || month > 12)
-	{
-		throw FaException(ERROR_TIME, "ÔÂ·İ´íÎó£¡");
-	}
-	if (day <= 0 || day > this->getLastDayOfMonth(year, month))
-	{
-		throw FaException(ERROR_TIME, "ÈÕ(day)´íÎó£¡");
-	}
+    int year = atoi(strDate.substr(0, 4).c_str());
+    int month = atoi(strDate.substr(4, 2).c_str());
+    int day = atoi(strDate.substr(6, 2).c_str());
+
+    if (year <= 0 || year > 9999)
+    {
+        throw FaException(ERROR_TIME, "å¹´ä»½é”™è¯¯ï¼");
+    }
+    if (month <= 0 || month > 12)
+    {
+        throw FaException(ERROR_TIME, "æœˆä»½é”™è¯¯ï¼");
+    }
+    if (day <= 0 || day > this->getLastDayOfMonth(year, month))
+    {
+        throw FaException(ERROR_TIME, "æ—¥(day)é”™è¯¯ï¼");
+    }
 }
 
-//¼ì²é6Î»×Ö·ûµÄÊ±¼ä¸ñÊ½ÊÇ·ñÕıÈ·
+//æ£€æŸ¥6ä½å­—ç¬¦çš„æ—¶é—´æ ¼å¼æ˜¯å¦æ­£ç¡®
 void FaBaseTime::verifyTime(const string& strTime)
 {
-	int hour = atoi(strTime.substr(0, 2).c_str());
-	int minute = atoi(strTime.substr(2, 2).c_str());
-	int second = atoi(strTime.substr(4, 2).c_str());
-	
-	if (hour < 0 || hour > 23)
-	{
-		throw FaException(ERROR_TIME, "Ğ¡Ê±´íÎó£¡");
-	}
-	if (minute < 0 || minute > 59)
-	{
-		throw FaException(ERROR_TIME, "·ÖÖÓ´íÎó£¡");
-	}
-	if (second < 0 || second > 59)
-	{
-		throw FaException(ERROR_TIME, "Ãë´íÎó£¡");
-	}
+    int hour = atoi(strTime.substr(0, 2).c_str());
+    int minute = atoi(strTime.substr(2, 2).c_str());
+    int second = atoi(strTime.substr(4, 2).c_str());
+
+    if (hour < 0 || hour > 23)
+    {
+        throw FaException(ERROR_TIME, "å°æ—¶é”™è¯¯ï¼");
+    }
+    if (minute < 0 || minute > 59)
+    {
+        throw FaException(ERROR_TIME, "åˆ†é’Ÿé”™è¯¯ï¼");
+    }
+    if (second < 0 || second > 59)
+    {
+        throw FaException(ERROR_TIME, "ç§’é”™è¯¯ï¼");
+    }
 }

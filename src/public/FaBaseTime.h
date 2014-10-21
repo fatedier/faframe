@@ -1,10 +1,10 @@
 /**************************************************************************************
 *
-* Copyright  (c) 2014, FateDier All rights reserved¡£
-* ÎÄ¼şÃû³Æ:  FaBaseTime.h
-* ÃèÊö:      ÈÕÆÚÊ±¼äÏà¹ØµÄ»ùÀà
-* @author:   Íõ³ÉÁú
-* ĞŞ¸Ä¼ÇÂ¼£º
+* Copyright  (c) 2014, FateDier All rights reservedã€‚
+* æ–‡ä»¶åç§°:  FaBaseTime.h
+* æè¿°:      æ—¥æœŸæ—¶é—´ç›¸å…³çš„åŸºç±»
+* @author:   ç‹æˆé¾™
+* ä¿®æ”¹è®°å½•ï¼š
 *
 ***************************************************************************************/
 
@@ -22,30 +22,30 @@ using namespace std;
 
 class FaBaseTime
 {
-/**¹¹Ôì¼°Îö¹¹º¯Êı**/
+/**æ„é€ åŠææ„å‡½æ•°**/
 public:
-	FaBaseTime();							//¹¹Ôì¿Õ×Ö·û´®
-	FaBaseTime(const char* sDateTime);		//¸ù¾İ×Ö·û´®¹¹ÔìÊ±¼ä¶ÔÏó
-	FaBaseTime(const string& strDateTime);	//¸ù¾İ×Ö·û´®¹¹ÔìÊ±¼ä¶ÔÏó
-	virtual ~FaBaseTime();
+    FaBaseTime();                           //æ„é€ ç©ºå­—ç¬¦ä¸²
+    FaBaseTime(const char* sDateTime);      //æ ¹æ®å­—ç¬¦ä¸²æ„é€ æ—¶é—´å¯¹è±¡
+    FaBaseTime(const string& strDateTime);  //æ ¹æ®å­—ç¬¦ä¸²æ„é€ æ—¶é—´å¯¹è±¡
+    virtual ~FaBaseTime();
 
-/**³£ÓÃº¯Êı**/
-	bool isLeapYear(int year) const;					//ÅĞ¶ÏÊÇ·ñÊÇÈòÄê
-	int getLastDayOfMonth(int year, int month) const;	//»ñÈ¡Ö¸¶¨ÄêÔÂµÄ×îºóÒ»Ìì
-	string toString() const;							//·µ»ØÈÕÆÚÊ±¼ä×Ö·û´®
-	virtual time_t mkTime() const = 0;					//»ñÈ¡´Ó1970Äê¿ªÊ¼µ½Ö¸¶¨ÈÕÆÚµÄÃëÊı
-	virtual string getSysTime() = 0;					//»ñÈ¡ÏµÍ³Ê±¼ä
-	
-/**ÄÚ²¿µ÷ÓÃº¯Êı**/
+/**å¸¸ç”¨å‡½æ•°**/
+    bool isLeapYear(int year) const;                    //åˆ¤æ–­æ˜¯å¦æ˜¯é—°å¹´
+    int getLastDayOfMonth(int year, int month) const;   //è·å–æŒ‡å®šå¹´æœˆçš„æœ€åä¸€å¤©
+    string toString() const;                            //è¿”å›æ—¥æœŸæ—¶é—´å­—ç¬¦ä¸²
+    virtual time_t mkTime() const = 0;                  //è·å–ä»1970å¹´å¼€å§‹åˆ°æŒ‡å®šæ—¥æœŸçš„ç§’æ•°
+    virtual string getSysTime() = 0;                    //è·å–ç³»ç»Ÿæ—¶é—´
+
+/**å†…éƒ¨è°ƒç”¨å‡½æ•°**/
 protected:
-	void verifyDate(const string& strDate);		//¼ì²é8Î»×Ö·ûµÄÈÕÆÚ¸ñÊ½ÊÇ·ñÕıÈ·
-	void verifyTime(const string& strTime);		//¼ì²é6Î»×Ö·ûµÄÊ±¼ä¸ñÊ½ÊÇ·ñÕıÈ·
-	virtual bool verifyFormat() = 0;			//¼ì²éÊ±¼ä¸ñÊ½ºÍ×Ö·û´®ÊÇ·ñ·ûºÏÒªÇó
-	
-	static int m_nMonthDayC[];	//ÆÕÍ¨Äê·İµÄÔÂ·İ¶ÔÓ¦µÄÌìÊı
-	static int m_nMonthDayS[];	//ÈòÄêµÄÔÂ·İ¶ÔÓ¦µÄÌìÊı
-	
-	string m_strDateTime;		//Ê±¼ä¶ÔÓ¦×Ö·û´®
+    void verifyDate(const string& strDate);     //æ£€æŸ¥8ä½å­—ç¬¦çš„æ—¥æœŸæ ¼å¼æ˜¯å¦æ­£ç¡®
+    void verifyTime(const string& strTime);     //æ£€æŸ¥6ä½å­—ç¬¦çš„æ—¶é—´æ ¼å¼æ˜¯å¦æ­£ç¡®
+    virtual bool verifyFormat() = 0;            //æ£€æŸ¥æ—¶é—´æ ¼å¼å’Œå­—ç¬¦ä¸²æ˜¯å¦ç¬¦åˆè¦æ±‚
+
+    static int m_nMonthDayC[];  //æ™®é€šå¹´ä»½çš„æœˆä»½å¯¹åº”çš„å¤©æ•°
+    static int m_nMonthDayS[];  //é—°å¹´çš„æœˆä»½å¯¹åº”çš„å¤©æ•°
+
+    string m_strDateTime;       //æ—¶é—´å¯¹åº”å­—ç¬¦ä¸²
 };
 
 #endif //FAFRAME_PUBLIC_FABASETIME_H_

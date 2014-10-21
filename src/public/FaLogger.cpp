@@ -1,10 +1,10 @@
 /**************************************************************************************
 *
-* Copyright  (c) 2014, FateDier All rights reserved¡£
-* ÎÄ¼þÃû³Æ:  FaLogger.cpp
-* ÃèÊö:      ÈÕÖ¾Àà
-* @author:   Íõ³ÉÁú
-* ÐÞ¸Ä¼ÇÂ¼£º
+* Copyright  (c) 2014, FateDier All rights reservedã€‚
+* æ–‡ä»¶åç§°:  FaLogger.cpp
+* æè¿°:      æ—¥å¿—ç±»
+* @author:   çŽ‹æˆé¾™
+* ä¿®æ”¹è®°å½•ï¼š
 *
 ***************************************************************************************/
 
@@ -12,77 +12,77 @@
 
 FaLogger::FaLogger()
 {
-	m_nLogLevel = FADEBUG;
+    m_nLogLevel = FADEBUG;
 }
 
-//¹¹Ôìº¯Êý£ºÐèÒªÅäÖÃÎÄ¼þ¶ÔÏó¡¢ÅäÖÃµÄÇ°×ºÃû£¨Èç test.log.level£¬test¾ÍÊÇÇ°×ºÃû£©
+//æž„é€ å‡½æ•°ï¼šéœ€è¦é…ç½®æ–‡ä»¶å¯¹è±¡ã€é…ç½®çš„å‰ç¼€åï¼ˆå¦‚ test.log.levelï¼Œtestå°±æ˜¯å‰ç¼€åï¼‰
 FaLogger::FaLogger(FaProperties& cfgFile, const char* preName)
 {
-	this->init(cfgFile, preName);
+    this->init(cfgFile, preName);
 }
 
 FaLogger::~FaLogger()
 {
-	
+
 }
 
 
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 void FaLogger::init(FaProperties& cfgFile, const char* preName)
 {
-	string strPreName = preName;
-	if (strPreName != "")
-	{
-		strPreName += ".";
-	}
-	//È¡ÈÕÖ¾¼¶±ð
-	m_nLogLevel = cfgFile.getInt(strPreName + "log.level", FADEBUG);
-	//È¡ÈÕÖ¾ÎÄ¼þÃû
-	m_strLogFile = cfgFile.getString(strPreName + "log.filename", "./logs/default.log");
-	
-	//³õÊ¼»¯ÈÕÖ¾ÎÄ¼þ¶ÔÏó
-	m_fileOut = fopen(m_strLogFile.c_str(), "a+");
+    string strPreName = preName;
+    if (strPreName != "")
+    {
+        strPreName += ".";
+    }
+    //å–æ—¥å¿—çº§åˆ«
+    m_nLogLevel = cfgFile.getInt(strPreName + "log.level", FADEBUG);
+    //å–æ—¥å¿—æ–‡ä»¶å
+    m_strLogFile = cfgFile.getString(strPreName + "log.filename", "./logs/default.log");
+
+    //åˆå§‹åŒ–æ—¥å¿—æ–‡ä»¶å¯¹è±¡
+    m_fileOut = fopen(m_strLogFile.c_str(), "a+");
 }
 
-//¹Ø±ÕÎÄ¼þÊä³ö¶ÔÏó
+//å…³é—­æ–‡ä»¶è¾“å‡ºå¯¹è±¡
 void FaLogger::close()
 {
-	fclose(m_fileOut);
-	m_fileOut = NULL;
+    fclose(m_fileOut);
+    m_fileOut = NULL;
 }
 
-//¼ì²âÖ¸¶¨ÈÕÖ¾¼¶±ðÊÇ·ñÄÜ¹»Êä³ö
+//æ£€æµ‹æŒ‡å®šæ—¥å¿—çº§åˆ«æ˜¯å¦èƒ½å¤Ÿè¾“å‡º
 bool FaLogger::isEnableFor(FaLogLevel logLevel)
 {
-	if (logLevel >= m_nLogLevel)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+    if (logLevel >= m_nLogLevel)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
-//¼ÇÂ¼Ò»ÌõÈÕÖ¾
+//è®°å½•ä¸€æ¡æ—¥å¿—
 void FaLogger::log(FaLogLevel logLevel, const string& msg, const char* file, int line)
 {
-	if (false == this->isEnableFor(logLevel))
-	{
-		return;
-	}
-	
-	string strNow = fa_getSysTime();
-	stringstream os;
-	os << "[";
-	os << strNow.substr(0, 4) << "-" << strNow.substr(4, 2) << "-" << strNow.substr(6, 2) << " "; 	//ÄêÔÂÈÕ
-	os << strNow.substr(8, 2) << ":" << strNow.substr(10, 2) << ":" << strNow.substr(12, 2) << ".";	//Ê±·ÖÃë
-	os << strNow.substr(14, 3);				//ºÁÃë
-	os << "] ";
-	os << sLogLevelName[logLevel] << " - ";	//ÈÕÖ¾µÈ¼¶
-	os << msg << " ";						//ÈÕÖ¾ÄÚÈÝ
-	os << "[" << file << ":";				//´úÂëËùÔÚÎÄ¼þÃû
-	os << line << "]\n";					//´úÂëËùÔÚÐÐ
-	
-	fprintf(m_fileOut, "%s", os.str().c_str());
+    if (false == this->isEnableFor(logLevel))
+    {
+        return;
+    }
+
+    string strNow = fa_getSysTime();
+    stringstream os;
+    os << "[";
+    os << strNow.substr(0, 4) << "-" << strNow.substr(4, 2) << "-" << strNow.substr(6, 2) << " ";   //å¹´æœˆæ—¥
+    os << strNow.substr(8, 2) << ":" << strNow.substr(10, 2) << ":" << strNow.substr(12, 2) << "."; //æ—¶åˆ†ç§’
+    os << strNow.substr(14, 3);             //æ¯«ç§’
+    os << "] ";
+    os << sLogLevelName[logLevel] << " - "; //æ—¥å¿—ç­‰çº§
+    os << msg << " ";                       //æ—¥å¿—å†…å®¹
+    os << "[" << file << ":";               //ä»£ç æ‰€åœ¨æ–‡ä»¶å
+    os << line << "]\n";                    //ä»£ç æ‰€åœ¨è¡Œ
+
+    fprintf(m_fileOut, "%s", os.str().c_str());
 }

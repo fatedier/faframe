@@ -1,12 +1,12 @@
-#ĞèÒªÉú³É¾²Ì¬¿âµÄMakefile
-#³ÌĞò¸ùÄ¿Â¼
+#éœ€è¦ç”Ÿæˆé™æ€åº“çš„Makefile
+#ç¨‹åºæ ¹ç›®å½•
 top_srcdir	= ..
 
-#Éú³É¾²Ì¬¿âºóËù´æ·ÅµÄÎ»ÖÃ
+#ç”Ÿæˆé™æ€åº“åæ‰€å­˜æ”¾çš„ä½ç½®
 libdir = $(top_srcdir)/lib
-#¾²Ì¬¿âÎÄ¼şÃû
+#é™æ€åº“æ–‡ä»¶å
 LIBNAME		= libfa_public.a
-#Â·¾¶+¾²Ì¬¿âÎÄ¼şÃû
+#è·¯å¾„+é™æ€åº“æ–‡ä»¶å
 TARGET		= $(libdir)/$(LIBNAME)
 
 CPP_FILES = $(shell ls *.cpp)
@@ -16,10 +16,10 @@ BASE = $(basename $(SRCS))
 OBJS = $(addsuffix .o, $(addprefix obj/,$(BASE)))
 DEPS = $(addsuffix .d, $(addprefix dep/,$(BASE)))
 
-#°üº¬¹«¹²Make¹æÔò
+#åŒ…å«å…¬å…±Makeè§„åˆ™
 include $(top_srcdir)/makeinclude/Make.rules
 
-#ÉèÖÃÍ·ÎÄ¼ş¼°¿âÎÄ¼şµÄÎ»ÖÃ
+#è®¾ç½®å¤´æ–‡ä»¶åŠåº“æ–‡ä»¶çš„ä½ç½®
 INCLUDEDIR := $(INCLUDEDIR)
 
 $(TARGET): $(OBJS)

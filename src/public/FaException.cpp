@@ -1,10 +1,10 @@
 /**************************************************************************************
 *
-* Copyright  (c) 2014, FateDier All rights reserved¡£
-* ÎÄ¼şÃû³Æ:  FaException.cpp
-* ÃèÊö:      Òì³£´¦ÀíÀà
-* @author:   Íõ³ÉÁú
-* ĞŞ¸Ä¼ÇÂ¼£º
+* Copyright  (c) 2014, FateDier All rights reservedã€‚
+* æ–‡ä»¶åç§°:  FaException.cpp
+* æè¿°:      å¼‚å¸¸å¤„ç†ç±»
+* @author:   ç‹æˆé¾™
+* ä¿®æ”¹è®°å½•ï¼š
 *
 ***************************************************************************************/
 
@@ -12,34 +12,34 @@
 
 FaException::FaException(int nErrorCode, const char* pErrorMsg) throw()
 {
-	this->m_nErrorCode = nErrorCode;
-	this->m_strErrorMsg = pErrorMsg;
+    this->m_nErrorCode = nErrorCode;
+    this->m_strErrorMsg = pErrorMsg;
 }
 
 FaException::FaException(int nErrorCode, string strErrorMsg) throw()
 {
-	this->m_nErrorCode = nErrorCode;
-	this->m_strErrorMsg = strErrorMsg;
+    this->m_nErrorCode = nErrorCode;
+    this->m_strErrorMsg = strErrorMsg;
 }
 
 FaException::~FaException() throw()
 {
 }
 
-//±ê×¼¿âÒì³£»ùÀàµÄ·½·¨
+//æ ‡å‡†åº“å¼‚å¸¸åŸºç±»çš„æ–¹æ³•
 const char* FaException::what() const throw()
 {
-	return m_strErrorMsg.c_str();
+    return m_strErrorMsg.c_str();
 }
 
-//»ñÈ¡Òì³£±àÂë
+//è·å–å¼‚å¸¸ç¼–ç 
 int FaException::getCode() throw()
 {
-	return m_nErrorCode;
+    return m_nErrorCode;
 }
 
-//»ñÈ¡Òì³£ĞÅÏ¢
+//è·å–å¼‚å¸¸ä¿¡æ¯
 const char* FaException::getMsg() const throw()
 {
-	return m_strErrorMsg.c_str();
+    return m_strErrorMsg.c_str();
 }
