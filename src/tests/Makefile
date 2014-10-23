@@ -26,7 +26,7 @@ LIBS := -lfa_public
 #设置目标程序依赖的.o文件
 $(TARGET):$(OBJS) $(LIBS)
 	-rm -f $@
-	$(CXX) -o $(TARGET) $(INCLUDEDIR) $(LDFLAGS) $(OBJS) $(LIBS)
+	$(CXX) $(OPTION) -o $(TARGET) $(INCLUDEDIR) $(LDFLAGS) $(OBJS) $(LIBS)
 
 #测试使用
 .PHONY:mk

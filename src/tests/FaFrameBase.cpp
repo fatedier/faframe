@@ -26,6 +26,7 @@ int FaFrameBase::initialize(int argc, char* argv[])
         string strKey = argv[i];
     }
     //TODO:将类似"-F test.cfg"这样的参数作为键值对放入map中，之后按需要取
+    return 0;
 }
 
 //启动进程前的准备工作

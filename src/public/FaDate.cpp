@@ -219,7 +219,7 @@ int operator -(const FaDate& left, const FaDate& right)
 bool FaDate::verifyFormat()
 {
     //检查时间字符串是否全都是数字
-    for (int i=0; i<m_strDateTime.size(); i++)
+    for (unsigned int i=0; i<m_strDateTime.size(); i++)
     {
         if (!isdigit(m_strDateTime[i]))
         {

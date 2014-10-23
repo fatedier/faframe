@@ -4,6 +4,9 @@
 CXX := g++
 CC := gcc
 
+#编译参数
+OPTION := -Wall -g -ggdb -O2
+
 #设置编译.d文件相关内容
 DEPFLAGS := -MM
 DEPFILE = $@.$$$$
@@ -30,13 +33,13 @@ obj/%.o:%.cpp
 	@if test ! -d "obj"; then\
 		mkdir -p obj;\
 	fi;
-	$(CXX) -c -o $@ $(INCLUDEDIR) $<
+	$(CXX) $(OPTION) -c -o $@ $(INCLUDEDIR) $<
 	
 obj/%.o:%.c
 	@if test ! -d "obj"; then\
 		mkdir -p obj;\
 	fi;
-	$(CC) -c -o $@ $(INCLUDEDIR) $<
+	$(CC) $(OPTION) -c -o $@ $(INCLUDEDIR) $<
 	
 #生成.d文件,存放.cpp文件的所有依赖规则
 dep/%.d: %.cpp
