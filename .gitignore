@@ -32,3 +32,6 @@
 dep/
 obj/
 test
+
+# ctags
+tags
