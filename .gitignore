@@ -33,5 +33,6 @@ dep/
 obj/
 test
 
-# ctags
+# ctags and cscope file
 tags
+cscope*
