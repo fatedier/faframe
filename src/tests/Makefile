@@ -27,8 +27,3 @@ LIBS := -lfa_public
 $(TARGET):$(OBJS) $(LIBS)
 	-rm -f $@
 	$(CXX) $(OPTION) -o $(TARGET) $(INCLUDEDIR) $(LDFLAGS) $(OBJS) $(LIBS)
-
-#测试使用
-.PHONY:mk
-mk:
-	@echo $(OBJS)

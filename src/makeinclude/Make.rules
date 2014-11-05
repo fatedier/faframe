@@ -72,4 +72,4 @@ clean:
 	-rm -f $(TARGET)
 	-rm -f obj/*.o
 	-rm -f dep/*.d
-	-rm -f core
+	-rm -f core*
