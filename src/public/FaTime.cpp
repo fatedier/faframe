@@ -220,7 +220,7 @@ int operator -(const FaTime& left, const FaTime& right)
 bool FaTime::verifyFormat()
 {
     //检查时间字符串是否全都是数字
-    for (int i=0; i<m_strDateTime.size(); i++)
+    for (size_t i=0; i<m_strDateTime.size(); i++)
     {
         if (!isdigit(m_strDateTime[i]))
         {

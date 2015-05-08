@@ -41,7 +41,7 @@ string fa_getSysTime()
     pTime = localtime(&tv.tv_sec);
 
     char sTemp[30] = {0};
-    snprintf(sTemp, sizeof(sTemp), "%04d%02d%02d%02d%02d%02d%03d%03d", pTime->tm_year+1900, \
+    snprintf(sTemp, sizeof(sTemp), "%04d%02d%02d%02d%02d%02d%03ld%03ld", pTime->tm_year+1900, \
              pTime->tm_mon+1, pTime->tm_mday, pTime->tm_hour, pTime->tm_min, pTime->tm_sec, \
              tv.tv_usec/1000, tv.tv_usec%1000);
     return (string)sTemp;
