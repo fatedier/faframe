@@ -15,5 +15,6 @@
 #define ERROR_TIME          3
 #define ERROR_MATH          4
 #define ERROR_PROPERTIES    5
+#define ERROR_FILE          6
 
 #endif //FAFRAME_PUBLIC_DEFINEERRORS_H_

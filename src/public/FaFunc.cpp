@@ -46,3 +46,38 @@ string fa_getSysTime()
              tv.tv_usec/1000, tv.tv_usec%1000);
     return (string)sTemp;
 }
+
+string fa_getRealFileName(const string& strFilePath)
+{
+    string res = strFilePath;
+    int pos = res.find_last_of('/');
+    if (pos < 0)
+        return res;
+    else
+        return res.substr(pos + 1, res.size() - 1);
+}
+
+string fa_getDirOfFile(const string& strFilePath)
+{
+    string res = strFilePath;
+    int pos = res.find_last_of('/');
+    if (pos < 0)
+        return "";
+    else
+        return res.substr(0, pos);
+}
+
+int fa_getFileSize(const string& strFilePath)
+{
+    struct stat buf;
+    int res = stat(strFilePath.c_str(), &buf);
+    if (res < 0)
+        return -1;
+    else
+        return buf.st_size;
+}
+
+bool fa_fileExists(const string& strFilePath)
+{
+    return access(strFilePath.c_str(), 0) == 0;
+}
